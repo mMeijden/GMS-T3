@@ -3,7 +3,7 @@ package repo;
 import persist.Car;
 
 import javax.ejb.Stateful;
-import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 
 import java.util.List;
 
@@ -19,8 +19,14 @@ public class CarRepository extends AbstractRepository<Car> {
     }
 
     public Car findByLicense(String license){
-        return getEm().createNamedQuery("findByLicense", Car.class)
-                .setParameter("license", license)
-                .getSingleResult();
+        try {
+            return getEm().createNamedQuery("findByLicense", Car.class)
+                    .setParameter("license", license)
+                    .getSingleResult();
+        }
+        catch (NoResultException e){
+            //TODO: Log exception
+            return null;
+        }
     }
 }

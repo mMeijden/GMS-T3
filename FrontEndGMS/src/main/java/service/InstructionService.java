@@ -35,10 +35,11 @@ public class InstructionService {
     }
 
     /**
-     * Try and create the instruction.
+     * Create the instruction.
      * @return redirection page
      */
     public String createInstruction(){
-        return instructionProcessBean.executeProcess(email, license, instruction);
+        String s =  instructionProcessBean.executeProcess(email, license, instruction);
+        return s;
     }
 }

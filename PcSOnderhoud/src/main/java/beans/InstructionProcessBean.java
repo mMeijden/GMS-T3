@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateful;
+import javax.faces.context.FacesContext;
 
 import persist.Car;
 import persist.Instruction;
@@ -25,16 +26,6 @@ public class InstructionProcessBean {
     private Car car;
 //    private Customer customer;
 
-//    /**
-//     * TODO fancy javadoc
-//     * @return boolean succeeded
-//     */
-//    public boolean createInstruction(String license, Date assignDate, int mileage, boolean apk, boolean sample, String description){
-//        Car car = carRequestBean.findByLicense(license);
-//        boolean succeeded = instructionRequestBean.createInstruction(car, assignDate, mileage, apk, sample, description);
-//        return succeeded;
-//    }
-
     public String executeProcess(String email, String license, Instruction instruction) {
         if (!customerExists(email) || !carExists(license)){
             return returnPage;
@@ -42,16 +33,26 @@ public class InstructionProcessBean {
         else {
             createInstruction(car, instruction);
         }
-        return "index.xhtml";
+        return "instructionConfirmed";
     }
 
     private boolean customerExists(String email){
+//        TODO: Uncomment once customers are implemented
+//        customer = customerRequestBean.findbyEmail(email);
+//        if (customer == null){
+//            returnPage = "../customer/createCustomer.xhtml";
+//            return false;
+//        }
+//        else{
+//            return true;
+//        }
         return true;
     }
 
     private boolean carExists(String license){
         car = carRequestBean.findByLicense(license);
         if (car == null){
+            returnPage = "createCar";
             return false;
         }
         else {
