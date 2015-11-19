@@ -3,6 +3,7 @@ package persist;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -24,6 +25,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "GMT_INSTRUCTION")
+@Entity
 public class Instruction extends AbstractPersistentEntity implements Serializable{
 
     @NotNull
