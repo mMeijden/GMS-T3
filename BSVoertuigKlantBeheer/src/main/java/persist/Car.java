@@ -17,7 +17,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "GMT_CAR")
+@Table(name = "GMS_CAR")
 @Entity
 @NamedQueries({
         @NamedQuery(

@@ -1,7 +1,6 @@
 package service;
 
-import java.util.Date;
-
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -9,6 +8,7 @@ import javax.faces.bean.RequestScoped;
 import beans.InstructionProcessBean;
 import lombok.Getter;
 import lombok.Setter;
+import persist.Instruction;
 
 /**
  * Created by Remco on 19-11-2015.
@@ -23,12 +23,22 @@ public class InstructionService {
     private InstructionProcessBean instructionProcessBean;
 
     private String license;
-    private Date assignDate;
-    private int mileage;
-    private boolean apk;
-    private String description;
+    private String email;
+    private Instruction instruction;
 
-    public void createInstruction(){
-        instructionProcessBean.createInstruction(license, assignDate, mileage, apk, false, description);
+    /**
+     * Initialize bean.
+     */
+    @PostConstruct
+    public void init(){
+        instruction = new Instruction();
+    }
+
+    /**
+     * Try and create the instruction.
+     * @return redirection page
+     */
+    public String createInstruction(){
+        return instructionProcessBean.executeProcess(email, license, instruction);
     }
 }

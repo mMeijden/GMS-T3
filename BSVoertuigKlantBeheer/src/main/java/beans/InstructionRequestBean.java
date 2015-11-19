@@ -42,4 +42,10 @@ public class InstructionRequestBean implements Serializable {
         instructionRepository.save();
         return true;
     }
+
+    public boolean createInstruction(Instruction instruction){
+        instructionRepository.add(instruction);
+        instructionRepository.save();
+        return true;
+    }
 }

@@ -24,7 +24,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "GMT_INSTRUCTION")
+@Table(name = "GMS_INSTRUCTION")
 @Entity
 public class Instruction extends AbstractPersistentEntity implements Serializable{
 
@@ -38,7 +38,7 @@ public class Instruction extends AbstractPersistentEntity implements Serializabl
     @NotNull
     private boolean sample;
     @NotNull
-    private String instructionDescription;
+    private String description;
 
     @ManyToOne
     @JoinColumn(name = "CAR_ID")
@@ -57,6 +57,6 @@ public class Instruction extends AbstractPersistentEntity implements Serializabl
         this.mileage = mileage;
         this.apk = apk;
         this.sample = sample;
-        this.instructionDescription = description;
+        this.description = description;
     }
 }
