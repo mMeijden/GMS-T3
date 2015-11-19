@@ -1,28 +1,26 @@
 package persist;
 
+
 import lombok.*;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
-import java.io.Serializable;
 
 /**
  * Created by @author Matthijs van der Meijden on 19-11-2015.
  */
 @Getter
 @Setter
-@Builder
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
-public class Car extends AbstractPersistentEntity implements Serializable {
+@Builder
+public class LeasingCompany extends GenericCustomer {
 
     @NotNull
-    private String license;
-    @NotNull
-    private String brand;
-    @NotNull
-    private String type;
-
+    private String companyName;
+    @OneToOne(mappedBy = "leasingCompany")
+    private Customer customer;
 
 }
