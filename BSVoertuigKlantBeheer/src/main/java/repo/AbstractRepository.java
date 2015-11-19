@@ -29,7 +29,7 @@ import persist.AbstractPersistentEntity;
 @Setter
 public abstract class AbstractRepository<T extends AbstractPersistentEntity> {
 
-    @PersistenceContext(unitName = "PizzaOracleDomain")
+    @PersistenceContext
     private EntityManager em;
 
     @Getter(AccessLevel.PROTECTED)

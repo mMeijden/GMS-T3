@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
@@ -16,9 +17,10 @@ import java.io.Serializable;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
 public class Car extends AbstractPersistentEntity implements Serializable {
 
-    @Id
+    @NotNull
     private String license;
     @NotNull
     private String brand;
