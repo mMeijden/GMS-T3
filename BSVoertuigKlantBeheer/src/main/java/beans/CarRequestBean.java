@@ -21,7 +21,4 @@ public class CarRequestBean implements Serializable {
 
     public void Test(){}
 
-
-
-
 }
