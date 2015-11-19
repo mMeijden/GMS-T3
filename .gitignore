@@ -2,6 +2,7 @@
 
 ## Directory-based project format:
 .idea/
+*.iml
 # if you remove the above rule, at least ignore the follwing:
 
 # User-specific stuff:
