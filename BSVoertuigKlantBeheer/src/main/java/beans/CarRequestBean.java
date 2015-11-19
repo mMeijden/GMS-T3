@@ -26,4 +26,13 @@ public class CarRequestBean implements Serializable {
         carRepository.save();
     }
 
+    /**
+     * Find a car by it's license number
+     * @param license the license of the car
+     * @return the car
+     */
+    public Car findByLicense(String license){
+        return carRepository.findByLicense(license);
+    }
+
 }

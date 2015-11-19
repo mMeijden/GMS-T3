@@ -29,6 +29,6 @@ public class InstructionService {
     private String description;
 
     public void createInstruction(){
-//        instructionProcessBean.createInstruction(license, assignDate, mileage, apk, false, description);
+        instructionProcessBean.createInstruction(license, assignDate, mileage, apk, false, description);
     }
 }

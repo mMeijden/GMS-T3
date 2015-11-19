@@ -1,7 +1,11 @@
 package beans;
 
+import java.util.Date;
+
 import javax.ejb.EJB;
 import javax.ejb.Stateful;
+
+import persist.Car;
 
 /**
  * Created by Remco on 19-11-2015.
@@ -20,8 +24,9 @@ public class InstructionProcessBean {
      * TODO fancy javadoc
      * @return boolean succeeded
      */
-    public boolean createInstruction(String license){
-
-        return false;
+    public boolean createInstruction(String license, Date assignDate, int mileage, boolean apk, boolean sample, String description){
+        Car car = carRequestBean.findByLicense(license);
+        boolean succeeded = instructionRequestBean.createInstruction(car, assignDate, mileage, apk, sample, description);
+        return succeeded;
     }
 }
