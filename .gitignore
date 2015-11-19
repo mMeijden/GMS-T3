@@ -37,6 +37,7 @@ FrontEndGMS/target/
 ISRDW/target/
 PcSOnderhoud/target/
 target/
+classes/
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/
