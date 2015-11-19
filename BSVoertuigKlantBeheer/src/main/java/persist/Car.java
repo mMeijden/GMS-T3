@@ -16,7 +16,7 @@ import java.io.Serializable;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Car implements Serializable {
+public class Car extends AbstractPersistentEntity implements Serializable {
 
     @Id
     private String license;
