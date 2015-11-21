@@ -17,7 +17,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Builder
+
 public class Customer extends GenericCustomer implements Serializable {
 
     @NotNull
@@ -30,6 +30,14 @@ public class Customer extends GenericCustomer implements Serializable {
     @OneToOne
     @JoinColumn(name = "CUSTOMERID")
     private LeasingCompany leasingCompany;
+
+    //@Builder
+    public Customer(String streetName, long streetNumber, String zipCode, String city, String phone, String email,String firstName, String middleName, String lastName) {
+        super(streetName, streetNumber, zipCode, city, phone, email);
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.lastName = lastName;
+    }
 
 
 }

@@ -17,6 +17,15 @@
                 <p>
                     <h:form>
                         <div class="form-group">
+                            <h:outputLabel>Email</h:outputLabel>
+                            <h:inputText id="email"
+                                         value="#{instructionService.email}"
+                                         p:type="email"
+                                         p:title="Enter customer email"
+                                         p:placeholder="eg. gmst@gmail.com"
+                                         styleClass="form-control"/>
+                        </div>
+                        <div class="form-group">
                             <h:outputLabel>Car License</h:outputLabel><br/>
                             <h:inputText id="license"
                                          value="#{instructionService.license}"
@@ -27,7 +36,7 @@
                         <div class="form-group">
                             <h:outputLabel>Assign Date</h:outputLabel><br/>
                             <h:inputText id="assignDate"
-                                         value="#{instructionService.assignDate}"
+                                         value="#{instructionService.instruction.assignDate}"
                                          p:type="datetime"
                                          p:title="Enter the assign date"
                                          p:placeholder="dd-MM-yyyy HH:mm"
@@ -38,14 +47,15 @@
                         <div class="form-group">
                             <h:outputLabel>Mileage</h:outputLabel><br/>
                             <h:inputText id="mileage"
-                                         value="#{instructionService.mileage}"
+                                         value="#{instructionService.instruction.mileage}"
+                                         p:type="number"
                                          p:title="Enter the car's mileage"
                                          p:placeholder="123456"
                                          styleClass="form-control"/>
                         </div>
                         <div class="form-group">
                             <h:outputLabel>APK</h:outputLabel>
-                            <h:selectOneRadio value="#{instructionService.apk}">
+                            <h:selectOneRadio value="#{instructionService.instruction.apk}">
                                 <f:selectItem itemValue="#{true}" itemLabel="Yes" />
                                 <f:selectItem itemValue="#{false}" itemLabel="No" />
                             </h:selectOneRadio>
@@ -53,7 +63,7 @@
                         <div class="form-group">
                             <h:outputLabel>Description</h:outputLabel>
                             <h:inputTextarea id="description"
-                                             value="#{instructionService.description}"
+                                             value="#{instructionService.instruction.description}"
                                              p:title="Enter description"
                                              p:placeholder="eg. Replace tires"
                                              styleClass="form-control"/>

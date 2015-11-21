@@ -1,94 +1,63 @@
 package beans;
 
+import persist.Customer;
+import persist.LeasingCompany;
+
+import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.io.Serializable;
 
-/**
- * Created by @author Matthijs van der Meijden on 19-11-2015.
- */
 @Startup
 @Singleton
 public class ConfigBean implements Serializable {
-//
-//    @Inject
-//    private CarRequestBean carRequestBean;
-//    @Inject
-//    private CustomerRequestBean customerRequestBean;
-//
-//    @PersistenceContext(unitName = "PizzaOracleDomain")
-//    private EntityManager em;
-//
-//    private static final int AMOUNT = 100;
-//    private final SecureRandom r = new SecureRandom();
-//
-//    /**
-//     * Initialize dummy data.
-//     */
-//    @PostConstruct
-//    public void init() {
-//
-//        generateDummyData();
-//    }
-//
-//    private void generateDummyData() {
-//        Ingredient peperoni = Ingredient.builder()
-//                .name("Peperoni")
-//                .amount(r.nextInt(AMOUNT))
-//                .measurementType(Ingredient.MeasurementType.GRAM)
-//                .extraPrice(r.nextDouble() * AMOUNT)
-//                .build();
-//        Ingredient sauce = Ingredient.builder()
-//                .name("Tomato Sauce")
-//                .amount(r.nextInt(AMOUNT))
-//                .measurementType(Ingredient.MeasurementType.MILLILITER)
-//                .extraPrice(r.nextDouble() * AMOUNT)
-//                .build();
-//        Ingredient pineapple = Ingredient.builder()
-//                .name("Pineapple")
-//                .amount(r.nextInt(AMOUNT))
-//                .measurementType(Ingredient.MeasurementType.GRAM)
-//                .extraPrice(r.nextDouble() * AMOUNT)
-//                .build();
-//        Ingredient ham = Ingredient.builder()
-//                .name("Ham")
-//                .amount(r.nextInt(AMOUNT))
-//                .measurementType(Ingredient.MeasurementType.GRAM)
-//                .extraPrice(r.nextDouble() * AMOUNT)
-//                .build();
-//
-//        em.persist(
-//                Pizza.builder()
-//                        .name("Margherita")
-//                        .ingredients(
-//                                Arrays.asList(
-//                                        peperoni,
-//                                        sauce
-//                                )
-//                        )
-//                        .price(r.nextDouble() * AMOUNT)
-//                        .build()
-//        );
-//
-//        em.persist(
-//                Pizza.builder()
-//                        .name("Hawaii")
-//                        .ingredients(
-//                                Arrays.asList(
-//                                        pineapple,
-//                                        ham,
-//                                        sauce
-//                                )
-//                        )
-//                        .price(r.nextDouble() * AMOUNT)
-//                        .build()
-//        );
-//
-//        em.flush();
-//
-//    }
-//}
-//
 
 
+    @PersistenceContext(unitName = "my-persistence-unit")
+    private EntityManager em;
+
+    /**
+     * Initialize dummy data.
+     */
+    @PostConstruct
+
+    public void init() {
+
+        generateDummyData();
+    }
+
+    private void generateDummyData() {
+        Customer dummyCustomer1 = new Customer();
+        dummyCustomer1.setFirstName("Matthijs");
+        dummyCustomer1.setLastName("Meijden");
+        dummyCustomer1.setMiddleName("van der");
+        dummyCustomer1.setCity("Leidschendam");
+        dummyCustomer1.setEmail("luppie123@gmail.com");
+        dummyCustomer1.setPhone("0683231658");
+        dummyCustomer1.setStreetName("Sint Jozefstraat");
+        dummyCustomer1.setStreetNumber(35);
+        dummyCustomer1.setZipCode("2264xw");
+
+
+        LeasingCompany dummyCompany1 = LeasingCompany.builder()
+                .companyName("HOOGVLIET")
+                .customer(dummyCustomer1)
+                .city("Alphen a/d Rijn")
+                .email("info@hoogvliet.com")
+                .phone("0172418224")
+                .streetName("Maatschapslaan")
+                .streetNumber(128)
+                .zipCode("1547DK")
+                .build();
+
+
+        dummyCustomer1.setLeasingCompany(dummyCompany1);
+        em.persist(dummyCompany1);
+        em.persist(dummyCustomer1);
+        em.flush();
+
+
+    }
 }

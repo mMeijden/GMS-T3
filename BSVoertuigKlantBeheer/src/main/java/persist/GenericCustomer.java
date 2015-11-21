@@ -1,7 +1,6 @@
 package persist;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.MappedSuperclass;
 
@@ -11,10 +10,12 @@ import javax.persistence.MappedSuperclass;
 @Getter
 @Setter
 @MappedSuperclass
-public class GenericCustomer extends AbstractPersistentEntity {
+@AllArgsConstructor
+@NoArgsConstructor
+public abstract class GenericCustomer extends AbstractPersistentEntity {
 
     private String streetName;
-    private Long streetNumber;
+    private long streetNumber;
     private String zipCode;
     private String City;
     private String phone;
