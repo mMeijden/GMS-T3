@@ -7,6 +7,7 @@ import javax.ejb.Stateful;
 import javax.inject.Inject;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import persist.Car;
 import persist.Instruction;
@@ -19,6 +20,7 @@ import repo.InstructionRepository;
  */
 @Getter
 @Setter
+@NoArgsConstructor
 @Stateful
 public class InstructionRequestBean implements Serializable {
 
@@ -26,23 +28,18 @@ public class InstructionRequestBean implements Serializable {
     private InstructionRepository instructionRepository;
 
     /**
-     * Create new instruction.
-     *
-     * @param car         the car the instruction is assigned too
-     * @param assignDate  the date the instruction starts
-     * @param mileage     the mileage of the vehicle
-     * @param apk         does the vehicle come for APK yes/no?
-     * @param sample      will the APK be confirmed by the RDW yes/no?
-     * @param description description of the activities that need to be performed
-     * @return boolean succeeded
+     * Constructor for testing purposes.
+     * @param ir mock of InstructionRepository class
      */
-    public boolean createInstruction(Car car, Date assignDate, int mileage, boolean apk, boolean sample, String description) {
-        Instruction instruction = new Instruction(assignDate, mileage, apk, sample, description, car);
-        instructionRepository.add(instruction);
-        instructionRepository.save();
-        return true;
+    public InstructionRequestBean(InstructionRepository ir){
+        this.instructionRepository = ir;
     }
 
+    /**
+     * Save new instruction too DB.
+     * @param instruction the instruction too save
+     * @return boolean succeeded
+     */
     public boolean createInstruction(Instruction instruction){
         instructionRepository.add(instruction);
         instructionRepository.save();

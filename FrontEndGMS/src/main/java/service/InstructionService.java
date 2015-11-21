@@ -7,6 +7,7 @@ import javax.faces.bean.RequestScoped;
 
 import beans.InstructionProcessBean;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import persist.Instruction;
 
@@ -15,6 +16,7 @@ import persist.Instruction;
  */
 @Getter
 @Setter
+@NoArgsConstructor
 @ManagedBean(name = "instructionService")
 @RequestScoped
 public class InstructionService {
@@ -25,6 +27,14 @@ public class InstructionService {
     private String license;
     private String email;
     private Instruction instruction;
+
+    /**
+     * Constructor for testing purposes.
+     * @param ipb Mock of InstructionProcessBean
+     */
+    public InstructionService(InstructionProcessBean ipb){
+        this.instructionProcessBean = ipb;
+    }
 
     /**
      * Initialize bean.

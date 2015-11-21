@@ -6,6 +6,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateful;
 import javax.faces.context.FacesContext;
 
+import lombok.NoArgsConstructor;
 import persist.Car;
 import persist.Instruction;
 
@@ -14,6 +15,7 @@ import persist.Instruction;
  * <p/>
  * Handles the process of creating an instruction.
  */
+@NoArgsConstructor
 @Stateful
 public class InstructionProcessBean {
 
@@ -26,6 +28,11 @@ public class InstructionProcessBean {
     private Car car;
 //    private Customer customer;
 
+    public InstructionProcessBean(InstructionRequestBean irb, CarRequestBean crb){
+        this.instructionRequestBean = irb;
+        this.carRequestBean = crb;
+    }
+
     public String executeProcess(String email, String license, Instruction instruction) {
         if (!customerExists(email) || !carExists(license)){
             return returnPage;
@@ -37,7 +44,7 @@ public class InstructionProcessBean {
     }
 
     private boolean customerExists(String email){
-//        TODO: Uncomment once customers are implemented
+//        TODO: Uncomment once customers are implemented and modify unitTest
 //        customer = customerRequestBean.findbyEmail(email);
 //        if (customer == null){
 //            returnPage = "../customer/createCustomer.xhtml";
@@ -63,9 +70,5 @@ public class InstructionProcessBean {
     private boolean createInstruction(Car car, Instruction instruction){
         instruction.setCar(car);
         return instructionRequestBean.createInstruction(instruction);
-    }
-
-    private void resetProcess() {
-
     }
 }
