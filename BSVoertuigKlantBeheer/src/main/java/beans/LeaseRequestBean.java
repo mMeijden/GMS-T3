@@ -4,7 +4,9 @@ package beans;
 import lombok.Getter;
 import lombok.Setter;
 import persist.Customer;
+import persist.LeasingCompany;
 import repo.CustomerRepository;
+import repo.LeaseRepository;
 
 import javax.ejb.Stateful;
 import javax.inject.Inject;
@@ -19,12 +21,12 @@ import java.io.Serializable;
 public class LeaseRequestBean implements Serializable{
 
     @Inject
-    private CustomerRepository customerRepository;
+    private LeaseRepository leaseRepository;
 
 
-    public void addCustomer(Customer customer){
-        customerRepository.add(customer);
-        customerRepository.save();
+    public void addLeasingCompany(LeasingCompany leasingCompany){
+        leaseRepository.add(leasingCompany);
+        leaseRepository.save();
 
     }
 

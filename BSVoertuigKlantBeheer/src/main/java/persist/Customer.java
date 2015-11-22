@@ -17,8 +17,8 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-
-public class Customer extends GenericCustomer implements Serializable {
+@Builder
+public class Customer extends AbstractPersistentEntity implements Serializable {
 
     @NotNull
     private String firstName;
@@ -26,18 +26,23 @@ public class Customer extends GenericCustomer implements Serializable {
     private String middleName;
     @NotNull
     private String lastName;
+    @NotNull
+    private String streetName;
+    @NotNull
+    private long streetNumber;
+    @NotNull
+    private String zipCode;
+    @NotNull
+    private String city;
+    @NotNull
+    private String phone;
+    @NotNull
+    private String email;
 
     @OneToOne
     @JoinColumn(name = "CUSTOMERID")
     private LeasingCompany leasingCompany;
 
-    //@Builder
-    public Customer(String streetName, long streetNumber, String zipCode, String city, String phone, String email,String firstName, String middleName, String lastName) {
-        super(streetName, streetNumber, zipCode, city, phone, email);
-        this.firstName = firstName;
-        this.middleName = middleName;
-        this.lastName = lastName;
-    }
 
 
 }
