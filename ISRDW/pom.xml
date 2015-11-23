@@ -24,5 +24,12 @@
             </plugins>
         </pluginManagement>
     </build>
+    <dependencies>
+        <dependency>
+            <groupId>GMS-T3</groupId>
+            <artifactId>BSVenKbeheer</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 </project>
