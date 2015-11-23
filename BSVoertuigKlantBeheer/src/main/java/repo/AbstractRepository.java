@@ -59,6 +59,12 @@ public abstract class AbstractRepository<T extends AbstractPersistentEntity> {
         itemList.add(item);
     }
 
+
+    //TODO: TO IMPLEMENT
+    public void update(final T clazz){
+        //TO IMPLEMENT
+    }
+
     /**
      * Retrieve all items from the persistence unit.
      *
