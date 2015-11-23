@@ -5,7 +5,9 @@ import javax.ejb.Stateful;
 import javax.inject.Inject;
 
 import example.ApkCaller;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import persist.Car;
 import persist.Instruction;
 import util.InstructionStatus;
@@ -15,6 +17,8 @@ import util.InstructionStatus;
  * <p/>
  * Handles the process of creating an instruction.
  */
+@Getter
+@Setter
 @NoArgsConstructor
 @Stateful
 public class InstructionProcessBean {
@@ -29,17 +33,6 @@ public class InstructionProcessBean {
     private String returnPage;
     private Car car;
 //    private Customer customer;
-
-    /**
-     * Constructor for testing purposes.
-     *
-     * @param irb Mock of InstructionRequestBean
-     * @param crb Mock of CarRequestBean
-     */
-    public InstructionProcessBean(InstructionRequestBean irb, CarRequestBean crb) {
-        this.instructionRequestBean = irb;
-        this.carRequestBean = crb;
-    }
 
     /**
      * If customer and car exist create new Instruction.
