@@ -86,8 +86,28 @@ public class InstructionService {
         }
     }
 
+    /**
+     * Get list of Instructions that aren't closed or done.
+     * @return list of instructions
+     */
     public List<Instruction> getOpenInstructions(){
         List<Instruction> list = instructionRequestBean.getOpenInstructions();
         return list;
+    }
+
+    /**
+     * Start an instruction and change it's state.
+     * @param instruction instruction to start
+     */
+    public void startInstruction(Instruction instruction){
+
+    }
+
+    /**
+     * End instruction and change it's state.
+     * @param instruction instruction to end
+     */
+    public void endInstruction(Instruction instruction){
+
     }
 }

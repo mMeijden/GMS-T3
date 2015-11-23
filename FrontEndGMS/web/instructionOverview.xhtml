@@ -39,7 +39,14 @@
                             <f:facet name="header">
                                 Actions
                             </f:facet>
-                            Actionbuttons here
+                            <div class="btn-group">
+                                <h:commandButton value="Start"
+                                                 action="#{}"
+                                                 styleClass="btn btn-primary"/>
+                                <h:commandButton value="End"
+                                                 action="#{}"
+                                                 styleClass="btn btn-primary"/>
+                            </div>
                         </h:column>
                     </h:dataTable>
                 </p>

@@ -13,6 +13,7 @@ import lombok.Setter;
 import persist.Car;
 import persist.Instruction;
 import repo.InstructionRepository;
+import util.InstructionStatus;
 
 /**
  * Created by Remco on 19-11-2015.
@@ -54,5 +55,14 @@ public class InstructionRequestBean implements Serializable {
     public List<Instruction> getOpenInstructions(){
         List<Instruction> list = instructionRepository.getOpen();
         return list;
+    }
+
+
+    /**
+     * Alters the status of an instruction.
+     * @return boolean succeeded
+     */
+    public boolean alterInstructionStatus(Instruction instruction, InstructionStatus status){
+        instruction.setStatus(status);
     }
 }
