@@ -5,7 +5,7 @@ import lombok.Setter;
 import persist.Car;
 import repo.CarRepository;
 
-import javax.ejb.EJB;
+
 import javax.ejb.Stateful;
 import javax.inject.Inject;
 import java.io.Serializable;

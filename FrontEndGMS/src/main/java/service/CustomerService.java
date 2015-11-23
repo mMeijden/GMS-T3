@@ -19,6 +19,7 @@ import java.io.Serializable;
 @Named("customerService")
 @RequestScoped
 public class CustomerService implements Serializable {
+
     private Customer customer;
 
     @EJB

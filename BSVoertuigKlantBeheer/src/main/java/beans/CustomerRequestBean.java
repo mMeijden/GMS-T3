@@ -1,6 +1,5 @@
 package beans;
 
-
 import lombok.Getter;
 import lombok.Setter;
 import persist.Customer;
@@ -21,11 +20,8 @@ public class CustomerRequestBean implements Serializable{
     @Inject
     private CustomerRepository customerRepository;
 
-
     public void addCustomer(Customer customer){
         customerRepository.add(customer);
         customerRepository.save();
-
     }
-
 }

@@ -5,10 +5,12 @@ import lombok.Getter;
 import lombok.Setter;
 import persist.Car;
 
+
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
-import javax.inject.Named;
+import javax.faces.bean.ManagedBean;
+
 import java.io.Serializable;
 
 /**
@@ -16,7 +18,7 @@ import java.io.Serializable;
  */
 @Getter
 @Setter
-@Named("carService")
+@ManagedBean(name ="carService")
 @RequestScoped
 public class CarService implements Serializable {
 
