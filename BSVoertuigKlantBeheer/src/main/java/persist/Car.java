@@ -2,9 +2,10 @@ package persist;
 
 import lombok.*;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by @author Matthijs van der Meijden on 19-11-2015.
@@ -14,7 +15,14 @@ import java.io.Serializable;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "GMS_CAR")
 @Entity
+@NamedQueries({
+        @NamedQuery(
+                name = "findByLicense",
+                query = "SELECT c FROM Car c WHERE c.license = :license"
+        )
+})
 public class Car extends AbstractPersistentEntity implements Serializable {
 
     @NotNull
@@ -24,5 +32,6 @@ public class Car extends AbstractPersistentEntity implements Serializable {
     @NotNull
     private String type;
 
-
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "car")
+    private List<Instruction> instructions;
 }

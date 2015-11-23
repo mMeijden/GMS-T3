@@ -6,6 +6,7 @@ import lombok.*;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 /**
  * Created by @author Matthijs van der Meijden on 19-11-2015.
@@ -16,11 +17,22 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 @Entity
 @Builder
-public class LeasingCompany extends GenericCustomer {
+public class LeasingCompany extends AbstractPersistentEntity implements Serializable {
 
     @NotNull
     private String companyName;
     @OneToOne(mappedBy = "leasingCompany")
     private Customer customer;
-
+    @NotNull
+    private String streetName;
+    @NotNull
+    private long streetNumber;
+    @NotNull
+    private String zipCode;
+    @NotNull
+    private String city;
+    @NotNull
+    private String phone;
+    @NotNull
+    private String email;
 }
