@@ -6,7 +6,9 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateful;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 
+import example.ApkCaller;
 import lombok.NoArgsConstructor;
 import persist.Car;
 import persist.Instruction;
@@ -24,6 +26,9 @@ public class InstructionProcessBean {
     private InstructionRequestBean instructionRequestBean;
     @EJB
     private CarRequestBean carRequestBean;
+
+    @Inject
+    private ApkCaller apkCaller;
 
     private String returnPage;
     private Car car;
@@ -98,12 +103,22 @@ public class InstructionProcessBean {
      */
     private boolean createInstruction(Car car, Instruction instruction){
         instruction.setCar(car);
+        instruction.setSample(false);
         return instructionRequestBean.createInstruction(instruction);
     }
 
+    /**
+     * Sends a message to the RDW to notify that the car is ready for a Sample.
+     * The RDW will return a true or false message to mark the car.
+     * @param instruction the instruction that is updated.
+     */
     public void markCarReady(Instruction instruction){
-        instructionRequestBean.markReadyForSample(instruction);
-        //to implement
+
+        if(apkCaller.markReadyForSteekProef(instruction.getCar())){ // SOAP CALL TO RDW.
+
+            instructionRequestBean.markReadyForSample(instruction);
+        }
+
 
     }
 

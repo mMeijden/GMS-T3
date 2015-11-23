@@ -13,7 +13,8 @@ import java.util.Random;
 public class ApkCaller {
 
     @WebMethod
-    public boolean markReadyForSteekProef(){
+    public boolean markReadyForSteekProef(Car car){
+        //car unused yet. Should persist license plate to RDW.
         Random steekproef = new Random();
         int getal = steekproef.nextInt(1);
             if(getal == 1){

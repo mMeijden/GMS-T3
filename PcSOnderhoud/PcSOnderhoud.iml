@@ -38,5 +38,6 @@
     <orderEntry type="library" name="Maven: org.mockito:mockito-all:1.10.19" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.codehaus.sonar-plugins.java:sonar-jacoco-listeners:1.2" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.projectlombok:lombok:1.16.6" level="project" />
+    <orderEntry type="module" module-name="IS_RDW" />
   </component>
 </module>
