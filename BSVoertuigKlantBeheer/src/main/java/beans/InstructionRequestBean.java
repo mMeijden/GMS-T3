@@ -66,9 +66,4 @@ public class InstructionRequestBean implements Serializable {
         instruction.setStatus(status);
         instructionRepository.update(instruction);
     }
-
-    //TODO: TO IMPLEMENT
-    public void enableSample() {
-
-    }
 }

@@ -21,9 +21,15 @@ public class CarRequestBean implements Serializable {
     @Inject
     private CarRepository carRepository;
 
-    public void addCar(Car car) {
+    /**
+     * Add car to the DB.
+     * @param car the car to save@param car
+     * @return boolean succeeded
+     */
+    public boolean addCar(Car car) {
         carRepository.add(car);
         carRepository.save();
+        return true;
     }
 
     /**

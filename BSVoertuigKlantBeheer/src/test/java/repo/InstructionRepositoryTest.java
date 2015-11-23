@@ -1,6 +1,7 @@
 package repo;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
@@ -10,7 +11,9 @@ import javax.persistence.criteria.Root;
 
 import org.junit.Before;
 import org.junit.Test;
+import persist.Car;
 import persist.Instruction;
+import util.InstructionStatus;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -31,6 +34,10 @@ public class InstructionRepositoryTest {
         instructionRepository = new InstructionRepository();
         em = mock(EntityManager.class);
         instructionRepository.setEm(em);
+    }
+
+    @Test
+    public void testGetAll() {
         CriteriaBuilder cb = mock(CriteriaBuilder.class);
         CriteriaQuery<Instruction> cq = mock(CriteriaQuery.class);
         Root<Instruction> root = mock(Root.class);
@@ -45,10 +52,6 @@ public class InstructionRepositoryTest {
         when(cq.from(Instruction.class)).thenReturn(root);
         when(em.createQuery(cq)).thenReturn(tq);
         when(tq.getResultList()).thenReturn(instructions);
-    }
-
-    @Test
-    public void testGetAll() {
         assertThat(instructionRepository.getAll(), is(instructions));
     }
 
@@ -60,5 +63,16 @@ public class InstructionRepositoryTest {
     @Test
     public void testSave() {
         instructionRepository.save();
+    }
+
+    @Test
+    public void testGetOpen(){
+        TypedQuery<Instruction> tq = mock(TypedQuery.class);
+        when(instructionRepository.getEm().createNamedQuery("getOpenInstructions", Instruction.class)).thenReturn(tq);
+        when(tq.setParameter("done", InstructionStatus.DONE)).thenReturn(tq);
+        when(tq.setParameter("closed", InstructionStatus.CLOSED)).thenReturn(tq);
+        when(tq.getResultList()).thenReturn(instructions);
+
+        assertThat(instructionRepository.getOpen(), is(instructions));
     }
 }
