@@ -100,7 +100,7 @@ public class InstructionService {
      * @param instruction instruction to start
      */
     public void startInstruction(Instruction instruction){
-
+        instructionRequestBean.alterInstructionStatus(instruction, InstructionStatus.IN_PROGRESS);
     }
 
     /**
@@ -108,6 +108,6 @@ public class InstructionService {
      * @param instruction instruction to end
      */
     public void endInstruction(Instruction instruction){
-
+        instructionRequestBean.alterInstructionStatus(instruction, InstructionStatus.DONE);
     }
 }

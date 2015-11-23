@@ -58,11 +58,10 @@ public class InstructionRequestBean implements Serializable {
 
     /**
      * Alters the status of an instruction.
-     * @return boolean succeeded
      */
-    public boolean alterInstructionStatus(Instruction instruction, InstructionStatus status){
+    public void alterInstructionStatus(Instruction instruction, InstructionStatus status){
         instruction.setStatus(status);
-        return false;
+        instructionRepository.update(instruction);
     }
 
     //TODO: TO IMPLEMENT

@@ -60,9 +60,23 @@ public abstract class AbstractRepository<T extends AbstractPersistentEntity> {
     }
 
 
-    //TODO: TO IMPLEMENT
-    public void update(final T clazz){
-        //TO IMPLEMENT
+    /**
+     * Update an item in this repository.
+     *
+     * @param item the item to update.
+     */
+    public void update(final T item){
+        getEm().merge(item);
+    }
+
+    /**
+     * Delete an item in this repository.
+     *
+     * @param item the item to delete
+     */
+    public void delete(final T item){
+        T t = getEm().merge(item);
+        getEm().remove(t);
     }
 
     /**
