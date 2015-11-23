@@ -23,10 +23,15 @@ public class LeaseRequestBean implements Serializable {
     private LeaseRepository leaseRepository;
 
 
-    public void addLeasingCompany(LeasingCompany leasingCompany) {
+    /**
+     * Add LeasingCompany too DB.
+     * @param leasingCompany the leasingcomapny to add
+     * @return boolean succeeded
+     */
+    public boolean addLeasingCompany(LeasingCompany leasingCompany) {
         leaseRepository.add(leasingCompany);
         leaseRepository.save();
-
+        return true;
     }
 
 }

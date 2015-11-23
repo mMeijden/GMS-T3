@@ -21,8 +21,14 @@ public class CustomerRequestBean implements Serializable {
     @Inject
     private CustomerRepository customerRepository;
 
-    public void addCustomer(Customer customer) {
+    /**
+     * Add customer to the DB.
+     * @param customer the customer to add
+     * @return boolean succeeded
+     */
+    public boolean addCustomer(Customer customer) {
         customerRepository.add(customer);
         customerRepository.save();
+        return true;
     }
 }

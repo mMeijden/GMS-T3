@@ -4,7 +4,9 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.*;
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Future;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
@@ -37,6 +39,7 @@ public class Instruction extends AbstractPersistentEntity implements Serializabl
     @Future
     private Date assignDate;
     @NotNull
+    @Min(0)
     private int mileage;
     @NotNull
     private boolean apk;
