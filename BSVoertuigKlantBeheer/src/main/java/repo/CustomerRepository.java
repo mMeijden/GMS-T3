@@ -1,9 +1,10 @@
 package repo;
 
-import persist.Customer;
+import java.util.List;
 
 import javax.ejb.Stateful;
-import java.util.List;
+
+import persist.Customer;
 
 /**
  * Created by @author Matthijs van der Meijden on 19-11-2015.

@@ -1,10 +1,10 @@
 package repo;
 
-import persist.Customer;
-import persist.LeasingCompany;
+import java.util.List;
 
 import javax.ejb.Stateful;
-import java.util.List;
+
+import persist.LeasingCompany;
 
 /**
  * Created by @author Matthijs van der Meijden on 19-11-2015.

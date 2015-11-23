@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import beans.InstructionProcessBean;
+import beans.InstructionRequestBean;
 import org.junit.Before;
 import org.junit.Test;
 import persist.Instruction;
@@ -20,16 +21,18 @@ import static org.mockito.Mockito.when;
 public class InstructionServiceTest {
 
     private InstructionProcessBean instructionProcessBean;
+    private InstructionRequestBean instructionRequestBean;
     private InstructionService instructionService;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         instructionProcessBean = mock(InstructionProcessBean.class);
-        instructionService = new InstructionService(instructionProcessBean);
+        instructionRequestBean = mock(InstructionRequestBean.class);
+        instructionService = new InstructionService(instructionProcessBean, instructionRequestBean);
     }
 
     @Test
-    public void testCreateInstruction(){
+    public void testCreateInstruction() {
         when(instructionProcessBean.executeProcess(null, null, null)).thenReturn("returnPage");
         assertThat(instructionService.createInstruction(), is("returnPage"));
     }
@@ -39,7 +42,7 @@ public class InstructionServiceTest {
         SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy HH:mm");
 
         Date dateNoAPK = df.parse("22-11-2500 15:00");
-        Instruction instruction = new Instruction(dateNoAPK, 0, false, false, "Test");
+        Instruction instruction = new Instruction(dateNoAPK, 0, false, "Test");
         instructionService.setInstruction(instruction);
         assertThat(instructionService.isValidAssignDate(), is(true));
 
@@ -57,7 +60,7 @@ public class InstructionServiceTest {
         SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy HH:mm");
 
         Date dateAPK = df.parse("22-11-2500 11:00");
-        Instruction instruction = new Instruction(dateAPK, 0, true, false, "Test");
+        Instruction instruction = new Instruction(dateAPK, 0, true, "Test");
         instructionService.setInstruction(instruction);
         assertThat(instructionService.isValidAssignDate(), is(true));
 

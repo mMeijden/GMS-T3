@@ -4,7 +4,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core" >
+      xmlns:f="http://java.sun.com/jsf/core">
 
 <h:body>
 
@@ -13,6 +13,13 @@
 
             <div class="col-md-10 col-md-offset-1">
                 <h2>Create instruction</h2>
+
+                <div class="messagecolor">
+                    <h:messages showSummary="true"
+                                showDetail="false"
+                                errorStyle="color: #d20005"
+                                infoStyle="color: blue"/>
+                </div>
 
                 <p>
                     <h:form>
@@ -56,8 +63,8 @@
                         <div class="form-group">
                             <h:outputLabel>APK</h:outputLabel>
                             <h:selectOneRadio value="#{instructionService.instruction.apk}">
-                                <f:selectItem itemValue="#{true}" itemLabel="Yes" />
-                                <f:selectItem itemValue="#{false}" itemLabel="No" />
+                                <f:selectItem itemValue="#{true}" itemLabel="Yes"/>
+                                <f:selectItem itemValue="#{false}" itemLabel="No"/>
                             </h:selectOneRadio>
                         </div>
                         <div class="form-group">

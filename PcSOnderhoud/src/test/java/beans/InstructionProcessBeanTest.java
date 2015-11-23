@@ -6,7 +6,7 @@ import persist.Car;
 import persist.Instruction;
 
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -24,7 +24,7 @@ public class InstructionProcessBeanTest {
     private Car car;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         instructionRequestBean = mock(InstructionRequestBean.class);
         carRequestBean = mock(CarRequestBean.class);
         instructionProcessBean = new InstructionProcessBean(instructionRequestBean, carRequestBean);
@@ -43,7 +43,7 @@ public class InstructionProcessBeanTest {
     }
 
     @Test
-    public void testExecuteProcessCarNotExist(){
+    public void testExecuteProcessCarNotExist() {
         when(carRequestBean.findByLicense(license)).thenReturn(null);
         assertThat(instructionProcessBean.executeProcess(email, license, instruction), is("createCar"));
     }

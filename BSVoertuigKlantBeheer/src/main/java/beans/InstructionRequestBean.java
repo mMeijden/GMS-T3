@@ -1,7 +1,7 @@
 package beans;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.util.List;
 
 import javax.ejb.Stateful;
 import javax.inject.Inject;
@@ -9,9 +9,9 @@ import javax.inject.Inject;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import persist.Car;
 import persist.Instruction;
 import repo.InstructionRepository;
+import util.InstructionStatus;
 
 /**
  * Created by Remco on 19-11-2015.
@@ -29,35 +29,46 @@ public class InstructionRequestBean implements Serializable {
 
     /**
      * Constructor for testing purposes.
+     *
      * @param ir mock of InstructionRepository class
      */
-    public InstructionRequestBean(InstructionRepository ir){
+    public InstructionRequestBean(InstructionRepository ir) {
         this.instructionRepository = ir;
     }
 
     /**
      * Save new instruction too DB.
+     *
      * @param instruction the instruction too save
      * @return boolean succeeded
      */
-    public boolean createInstruction(Instruction instruction){
+    public boolean createInstruction(Instruction instruction) {
         instructionRepository.add(instruction);
         instructionRepository.save();
         return true;
     }
-    //TODO: TO IMPLEMENT
-    public void enableSample(){
-
-    }
 
     /**
-     * Updates the instruction when the instruction was a MOT test.
-     * This method is called after the SOAP call
-     * @param instruction the instruction with the updated MOT test value.
+     * Get a list of open instructions.
+     *
+     * @return list of instructions
      */
+    public List<Instruction> getOpenInstructions() {
+        List<Instruction> list = instructionRepository.getOpen();
+        return list;
+    }
 
-    public void markReadyForSample(Instruction instruction){
+
+    /**
+     * Alters the status of an instruction.
+     */
+    public void alterInstructionStatus(Instruction instruction, InstructionStatus status) {
+        instruction.setStatus(status);
         instructionRepository.update(instruction);
-        }
+    }
 
+    //TODO: TO IMPLEMENT
+    public void enableSample() {
+
+    }
 }

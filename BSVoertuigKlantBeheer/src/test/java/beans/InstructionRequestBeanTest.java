@@ -19,14 +19,14 @@ public class InstructionRequestBeanTest {
     private Instruction instruction;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         instructionRepository = mock(InstructionRepository.class);
         instructionRequestBean = new InstructionRequestBean(instructionRepository);
         instruction = new Instruction();
     }
 
     @Test
-    public void testCreateInstruction(){
+    public void testCreateInstruction() {
         assertThat(instructionRequestBean.createInstruction(instruction), is(true));
     }
 }
