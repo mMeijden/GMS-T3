@@ -34,6 +34,11 @@
     <orderEntry type="library" name="Maven: org.eclipse.persistence:org.eclipse.persistence.core:2.6.1" level="project" />
     <orderEntry type="library" name="Maven: log4j:log4j:1.2.16" level="project" />
     <orderEntry type="module" module-name="IS_RDW" />
+    <orderEntry type="library" name="Maven: com.sun.xml:jaxws-rt:2.0EA3" level="project" />
+    <orderEntry type="library" name="Maven: javax.xml:jaxws-api:2.0EA3" level="project" />
+    <orderEntry type="library" name="Maven: com.sun.xml:jaxb-impl:2.0EA3" level="project" />
+    <orderEntry type="library" name="Maven: javax.xml:jaxb-api:2.0EA3" level="project" />
+    <orderEntry type="library" name="Maven: javax.jws:jsr181-api:1.0-MR1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.12" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-core:1.3" level="project" />
     <orderEntry type="library" name="Maven: org.mockito:mockito-all:1.10.19" level="project" />

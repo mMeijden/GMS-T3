@@ -23,7 +23,7 @@ public class InstructionProcessBean {
     private InstructionRequestBean instructionRequestBean;
     @EJB
     private CarRequestBean carRequestBean;
-
+    @EJB
     private ApkCaller apkCaller;
 
     private String returnPage;
