@@ -2,6 +2,7 @@ package beans;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.ejb.Stateful;
 import javax.inject.Inject;
@@ -44,5 +45,14 @@ public class InstructionRequestBean implements Serializable {
         instructionRepository.add(instruction);
         instructionRepository.save();
         return true;
+    }
+
+    /**
+     * Get a list of open instructions.
+     * @return list of instructions
+     */
+    public List<Instruction> getOpenInstructions(){
+        List<Instruction> list = instructionRepository.getOpen();
+        return list;
     }
 }

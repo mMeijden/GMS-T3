@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import beans.InstructionProcessBean;
+import beans.InstructionRequestBean;
 import org.junit.Before;
 import org.junit.Test;
 import persist.Instruction;
@@ -20,12 +21,14 @@ import static org.mockito.Mockito.when;
 public class InstructionServiceTest {
 
     private InstructionProcessBean instructionProcessBean;
+    private InstructionRequestBean instructionRequestBean;
     private InstructionService instructionService;
 
     @Before
     public void setUp(){
         instructionProcessBean = mock(InstructionProcessBean.class);
-        instructionService = new InstructionService(instructionProcessBean);
+        instructionRequestBean = mock(InstructionRequestBean.class);
+        instructionService = new InstructionService(instructionProcessBean, instructionRequestBean);
     }
 
     @Test

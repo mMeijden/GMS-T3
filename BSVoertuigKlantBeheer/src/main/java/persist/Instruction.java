@@ -3,10 +3,7 @@ package persist;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
 
@@ -14,6 +11,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import util.InstructionStatus;
 
 /**
  * Created by Remco on 19-11-2015.
@@ -26,6 +24,15 @@ import lombok.Setter;
 @AllArgsConstructor
 @Table(name = "GMS_INSTRUCTION")
 @Entity
+@NamedQueries(
+        @NamedQuery(
+                name = "getOpenInstructions",
+                query = "SELECT i FROM Instruction i "
+                        + "WHERE NOT (i.status = :done) "
+                        + "OR NOT (i.status = :closed) "
+                        + "ORDER BY i.assignDate"
+        )
+)
 public class Instruction extends AbstractPersistentEntity implements Serializable{
 
     @NotNull
@@ -39,6 +46,9 @@ public class Instruction extends AbstractPersistentEntity implements Serializabl
     private boolean sample;
     @NotNull
     private String description;
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    private InstructionStatus status;
 
     @ManyToOne
     @JoinColumn(name = "CAR_ID")
@@ -58,5 +68,6 @@ public class Instruction extends AbstractPersistentEntity implements Serializabl
         this.apk = apk;
         this.sample = sample;
         this.description = description;
+        this.status = InstructionStatus.OPEN;
     }
 }

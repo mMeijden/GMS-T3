@@ -1,6 +1,7 @@
 package beans;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateful;
@@ -28,11 +29,23 @@ public class InstructionProcessBean {
     private Car car;
 //    private Customer customer;
 
+    /**
+     * Constructor for testing purposes.
+     * @param irb Mock of InstructionRequestBean
+     * @param crb Mock of CarRequestBean
+     */
     public InstructionProcessBean(InstructionRequestBean irb, CarRequestBean crb){
         this.instructionRequestBean = irb;
         this.carRequestBean = crb;
     }
 
+    /**
+     * If customer and car exist create new Instruction.
+     * @param email customer's email
+     * @param license car's license
+     * @param instruction instruction to be saved
+     * @return String return page
+     */
     public String executeProcess(String email, String license, Instruction instruction) {
         if (!customerExists(email) || !carExists(license)){
             return returnPage;
@@ -43,6 +56,11 @@ public class InstructionProcessBean {
         return "instructionConfirmed";
     }
 
+    /**
+     * Check if customer exists in DB.
+     * @param email customer's email
+     * @return boolean exists
+     */
     private boolean customerExists(String email){
 //        TODO: Uncomment once customers are implemented and modify unitTest
 //        customer = customerRequestBean.findbyEmail(email);
@@ -56,6 +74,11 @@ public class InstructionProcessBean {
         return true;
     }
 
+    /**
+     * Check if car exists in DB.
+     * @param license car's license
+     * @return boolean exists
+     */
     private boolean carExists(String license){
         car = carRequestBean.findByLicense(license);
         if (car == null){
@@ -67,6 +90,12 @@ public class InstructionProcessBean {
         }
     }
 
+    /**
+     * Create instruction in DB.
+     * @param car car the instruction relates too
+     * @param instruction instruction to be saved
+     * @return boolean created
+     */
     private boolean createInstruction(Car car, Instruction instruction){
         instruction.setCar(car);
         return instructionRequestBean.createInstruction(instruction);
