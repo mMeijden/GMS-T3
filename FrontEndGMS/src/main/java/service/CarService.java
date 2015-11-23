@@ -32,7 +32,12 @@ public class CarService implements Serializable {
         car = new Car();
     }
 
-    public void addCar() {
-        carRequestBean.addCar(car);
+    /**
+     * Add car too DB.
+     * @return boolean succeeded
+     */
+    public boolean addCar()
+    {
+        return carRequestBean.addCar(car);
     }
 }
