@@ -12,10 +12,10 @@ import java.util.List;
  */
 @Getter
 @Setter
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "GMS_CAR")
-@Builder
 @Entity
 @NamedQueries({
         @NamedQuery(
@@ -34,5 +34,4 @@ public class Car extends AbstractPersistentEntity implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "car")
     private List<Instruction> instructions;
-
 }

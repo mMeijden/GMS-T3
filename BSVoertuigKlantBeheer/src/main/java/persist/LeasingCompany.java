@@ -35,8 +35,4 @@ public class LeasingCompany extends AbstractPersistentEntity implements Serializ
     private String phone;
     @NotNull
     private String email;
-
-
-
-
 }

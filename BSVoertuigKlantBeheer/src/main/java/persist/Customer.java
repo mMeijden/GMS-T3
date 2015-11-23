@@ -43,6 +43,4 @@ public class Customer extends AbstractPersistentEntity implements Serializable {
     @JoinColumn(name = "CUSTOMERID")
     private LeasingCompany leasingCompany;
 
-
-
 }
