@@ -16,4 +16,5 @@ public class InstructionRepository extends AbstractRepository<Instruction> {
     public List<Instruction> getAll() {
         return super.getAll(Instruction.class);
     }
+
 }

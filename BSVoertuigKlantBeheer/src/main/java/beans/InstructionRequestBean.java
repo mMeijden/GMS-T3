@@ -45,4 +45,19 @@ public class InstructionRequestBean implements Serializable {
         instructionRepository.save();
         return true;
     }
+    //TODO: TO IMPLEMENT
+    public void enableSample(){
+
+    }
+
+    /**
+     * Updates the instruction when the instruction was a MOT test.
+     * This method is called after the SOAP call
+     * @param instruction the instruction with the updated MOT test value.
+     */
+
+    public void markReadyForSample(Instruction instruction){
+        instructionRepository.update(instruction);
+        }
+
 }
