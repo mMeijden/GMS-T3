@@ -39,9 +39,10 @@ public class InstructionService {
 
     /**
      * Constructor for testing purposes.
+     *
      * @param ipb Mock of InstructionProcessBean
      */
-    public InstructionService(InstructionProcessBean ipb, InstructionRequestBean irb){
+    public InstructionService(InstructionProcessBean ipb, InstructionRequestBean irb) {
         this.instructionProcessBean = ipb;
         this.instructionRequestBean = irb;
     }
@@ -50,64 +51,67 @@ public class InstructionService {
      * Initialize bean.
      */
     @PostConstruct
-    public void init(){
+    public void init() {
         instruction = new Instruction();
         instruction.setStatus(InstructionStatus.OPEN);
     }
 
     /**
      * Create the instruction.
+     *
      * @return redirection page
      */
-    public String createInstruction(){
-        String s =  instructionProcessBean.executeProcess(email, license, instruction);
+    public String createInstruction() {
+        String s = instructionProcessBean.executeProcess(email, license, instruction);
         return s;
     }
 
     /**
      * Validates if the instruction starts at a valid time.
+     *
      * @return boolean valid
      */
     @AssertTrue
-    public boolean isValidAssignDate(){
+    public boolean isValidAssignDate() {
         boolean apk = instruction.isApk();
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(instruction.getAssignDate());
         int hours = calendar.get(Calendar.HOUR_OF_DAY);
 
-        if (!apk && hours >= 7 && hours <= 17){
+        if (!apk && hours >= 7 && hours <= 17) {
             return true;
-        }
-        else if (apk && hours >= 7 && hours <= 12){
+        } else if (apk && hours >= 7 && hours <= 12) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
 
     /**
      * Get list of Instructions that aren't closed or done.
+     *
      * @return list of instructions
      */
-    public List<Instruction> getOpenInstructions(){
+    public List<Instruction> getOpenInstructions() {
         List<Instruction> list = instructionRequestBean.getOpenInstructions();
         return list;
     }
 
     /**
      * Start an instruction and change it's state.
+     *
      * @param instruction instruction to start
      */
-    public void startInstruction(Instruction instruction){
+    public void startInstruction(Instruction instruction) {
         instructionRequestBean.alterInstructionStatus(instruction, InstructionStatus.IN_PROGRESS);
     }
 
     /**
      * End instruction and change it's state.
+     *
      * @param instruction instruction to end
      */
-    public void endInstruction(Instruction instruction){
-        instructionRequestBean.alterInstructionStatus(instruction, InstructionStatus.DONE);
+    public void endInstruction(Instruction instruction) {
+        instructionProcessBean.endInstruction(instruction);
     }
 }

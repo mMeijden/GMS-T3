@@ -31,7 +31,7 @@ import util.InstructionStatus;
                         + "WHERE i.status NOT IN (:done, :closed) ORDER BY i.assignDate"
         )
 )
-public class Instruction extends AbstractPersistentEntity implements Serializable{
+public class Instruction extends AbstractPersistentEntity implements Serializable {
 
     @NotNull
     @Future
@@ -54,12 +54,13 @@ public class Instruction extends AbstractPersistentEntity implements Serializabl
 
     /**
      * Constructor.
-     * @param date the date the instruction starts
-     * @param mileage the mileage of the vehicle
-     * @param apk does the vehicle come for APK yes/no?
+     *
+     * @param date        the date the instruction starts
+     * @param mileage     the mileage of the vehicle
+     * @param apk         does the vehicle come for APK yes/no?
      * @param description description of the activities that need to be performed
      */
-    public Instruction(Date date, int mileage, boolean apk, String description){
+    public Instruction(Date date, int mileage, boolean apk, String description) {
         this.assignDate = date;
         this.mileage = mileage;
         this.apk = apk;

@@ -25,14 +25,14 @@ public class InstructionServiceTest {
     private InstructionService instructionService;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         instructionProcessBean = mock(InstructionProcessBean.class);
         instructionRequestBean = mock(InstructionRequestBean.class);
         instructionService = new InstructionService(instructionProcessBean, instructionRequestBean);
     }
 
     @Test
-    public void testCreateInstruction(){
+    public void testCreateInstruction() {
         when(instructionProcessBean.executeProcess(null, null, null)).thenReturn("returnPage");
         assertThat(instructionService.createInstruction(), is("returnPage"));
     }

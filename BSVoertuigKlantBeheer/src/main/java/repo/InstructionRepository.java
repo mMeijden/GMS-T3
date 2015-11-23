@@ -21,16 +21,16 @@ public class InstructionRepository extends AbstractRepository<Instruction> {
 
     /**
      * Get list of open instructions.
+     *
      * @return list of instructions
      */
-    public List<Instruction> getOpen(){
+    public List<Instruction> getOpen() {
         try {
             return getEm().createNamedQuery("getOpenInstructions", Instruction.class)
                     .setParameter("done", InstructionStatus.DONE)
                     .setParameter("closed", InstructionStatus.CLOSED)
                     .getResultList();
-        }
-        catch (NoResultException e){
+        } catch (NoResultException e) {
             //TODO: Log exception
             return null;
         }

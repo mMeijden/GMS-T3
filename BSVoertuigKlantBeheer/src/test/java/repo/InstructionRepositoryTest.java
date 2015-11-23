@@ -27,7 +27,7 @@ public class InstructionRepositoryTest {
     private ArrayList<Instruction> instructions;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         instructionRepository = new InstructionRepository();
         em = mock(EntityManager.class);
         instructionRepository.setEm(em);
@@ -48,17 +48,17 @@ public class InstructionRepositoryTest {
     }
 
     @Test
-    public void testGetAll(){
+    public void testGetAll() {
         assertThat(instructionRepository.getAll(), is(instructions));
     }
 
     @Test
-    public void testAdd(){
+    public void testAdd() {
         instructionRepository.add(new Instruction());
     }
 
     @Test
-    public void testSave(){
+    public void testSave() {
         instructionRepository.save();
     }
 }

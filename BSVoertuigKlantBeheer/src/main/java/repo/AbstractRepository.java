@@ -6,6 +6,7 @@ package repo;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -65,7 +66,7 @@ public abstract class AbstractRepository<T extends AbstractPersistentEntity> {
      *
      * @param item the item to update.
      */
-    public void update(final T item){
+    public void update(final T item) {
         getEm().merge(item);
     }
 
@@ -74,7 +75,7 @@ public abstract class AbstractRepository<T extends AbstractPersistentEntity> {
      *
      * @param item the item to delete
      */
-    public void delete(final T item){
+    public void delete(final T item) {
         T t = getEm().merge(item);
         getEm().remove(t);
     }

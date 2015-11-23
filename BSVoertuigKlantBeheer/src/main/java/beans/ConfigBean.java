@@ -1,14 +1,15 @@
 package beans;
 
-import persist.Customer;
-import persist.LeasingCompany;
+import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.io.Serializable;
+
+import persist.Customer;
+import persist.LeasingCompany;
 
 @Startup
 @Singleton

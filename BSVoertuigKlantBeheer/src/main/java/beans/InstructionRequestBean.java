@@ -29,18 +29,20 @@ public class InstructionRequestBean implements Serializable {
 
     /**
      * Constructor for testing purposes.
+     *
      * @param ir mock of InstructionRepository class
      */
-    public InstructionRequestBean(InstructionRepository ir){
+    public InstructionRequestBean(InstructionRepository ir) {
         this.instructionRepository = ir;
     }
 
     /**
      * Save new instruction too DB.
+     *
      * @param instruction the instruction too save
      * @return boolean succeeded
      */
-    public boolean createInstruction(Instruction instruction){
+    public boolean createInstruction(Instruction instruction) {
         instructionRepository.add(instruction);
         instructionRepository.save();
         return true;
@@ -48,9 +50,10 @@ public class InstructionRequestBean implements Serializable {
 
     /**
      * Get a list of open instructions.
+     *
      * @return list of instructions
      */
-    public List<Instruction> getOpenInstructions(){
+    public List<Instruction> getOpenInstructions() {
         List<Instruction> list = instructionRepository.getOpen();
         return list;
     }
@@ -59,24 +62,13 @@ public class InstructionRequestBean implements Serializable {
     /**
      * Alters the status of an instruction.
      */
-    public void alterInstructionStatus(Instruction instruction, InstructionStatus status){
+    public void alterInstructionStatus(Instruction instruction, InstructionStatus status) {
         instruction.setStatus(status);
         instructionRepository.update(instruction);
     }
 
     //TODO: TO IMPLEMENT
-    public void enableSample(){
+    public void enableSample() {
 
     }
-
-    /**
-     * Updates the instruction when the instruction was a MOT test.
-     * This method is called after the SOAP call
-     * @param instruction the instruction with the updated MOT test value.
-     */
-
-    public void markReadyForSample(Instruction instruction){
-        instructionRepository.update(instruction);
-        }
-
 }

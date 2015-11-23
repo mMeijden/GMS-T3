@@ -8,16 +8,15 @@ public enum InstructionStatus {
     DONE("Done"),
     CLOSED("Closed"),
     IN_PROGRESS("In progress"),
-    APK("APK"),
     SAMPLE("Sample");
 
     private final String STATUS;
 
-    private InstructionStatus(String status){
+    private InstructionStatus(String status) {
         this.STATUS = status;
     }
 
-    public String getSTATUS(){
+    public String getSTATUS() {
         return STATUS;
     }
 }
