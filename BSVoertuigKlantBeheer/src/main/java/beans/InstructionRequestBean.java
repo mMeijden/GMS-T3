@@ -1,7 +1,6 @@
 package beans;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Stateful;
@@ -10,7 +9,6 @@ import javax.inject.Inject;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import persist.Car;
 import persist.Instruction;
 import repo.InstructionRepository;
 import util.InstructionStatus;
@@ -64,5 +62,22 @@ public class InstructionRequestBean implements Serializable {
      */
     public boolean alterInstructionStatus(Instruction instruction, InstructionStatus status){
         instruction.setStatus(status);
+        return false;
     }
+
+    //TODO: TO IMPLEMENT
+    public void enableSample(){
+
+    }
+
+    /**
+     * Updates the instruction when the instruction was a MOT test.
+     * This method is called after the SOAP call
+     * @param instruction the instruction with the updated MOT test value.
+     */
+
+    public void markReadyForSample(Instruction instruction){
+        instructionRepository.update(instruction);
+        }
+
 }

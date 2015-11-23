@@ -100,4 +100,11 @@ public class InstructionProcessBean {
         instruction.setCar(car);
         return instructionRequestBean.createInstruction(instruction);
     }
+
+    public void markCarReady(Instruction instruction){
+        instructionRequestBean.markReadyForSample(instruction);
+        //to implement
+
+    }
+
 }
