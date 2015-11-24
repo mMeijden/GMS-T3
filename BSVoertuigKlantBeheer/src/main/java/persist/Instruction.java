@@ -2,6 +2,7 @@ package persist;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Scanner;
 
 import javax.persistence.*;
 import javax.validation.constraints.DecimalMin;
@@ -9,10 +10,7 @@ import javax.validation.constraints.Future;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import util.InstructionStatus;
 
 /**

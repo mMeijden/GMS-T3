@@ -66,4 +66,8 @@ public class InstructionRequestBean implements Serializable {
         instruction.setStatus(status);
         instructionRepository.update(instruction);
     }
+
+    public Instruction findInstructionById(Long id){
+        return instructionRepository.findById(id);
+    }
 }

@@ -8,6 +8,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.validation.constraints.AssertTrue;
 
 import beans.InstructionProcessBean;
@@ -25,7 +26,7 @@ import util.InstructionStatus;
 @Setter
 @NoArgsConstructor
 @ManagedBean(name = "instructionService")
-@RequestScoped
+@SessionScoped
 public class InstructionService {
 
     @EJB
@@ -113,5 +114,10 @@ public class InstructionService {
      */
     public void endInstruction(Instruction instruction) {
         instructionProcessBean.endInstruction(instruction);
+    }
+
+    public String viewInstruction(Instruction instruction){
+        this.instruction = instruction;
+        return "instructionView";
     }
 }

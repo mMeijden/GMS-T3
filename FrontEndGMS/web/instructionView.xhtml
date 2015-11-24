@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+        >
+
+<h:body>
+
+    <ui:composition template="template/template.xhtml">
+
+        <ui:define name="content">
+
+            <div class="col-md-10 col-md-offset-1">
+                <h2>Instruction ##{instructionService.instruction.id}</h2>
+
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Instruction details</h3>
+                        </div>
+                        <div class="panel-body">
+                            <h4>Status: #{instructionService.instruction.status}</h4>
+
+                            <p>
+                                <h:outputLabel>Assign Date: </h:outputLabel>#{instructionService.instruction.assignDate}
+                                <br/>
+                                <h:outputLabel>Mileage: </h:outputLabel>#{instructionService.instruction.mileage}
+                                <br/>
+                                <h:outputLabel>APK: </h:outputLabel>#{instructionService.instruction.apk}<br/>
+                                <h:outputLabel>Sample: </h:outputLabel>#{instructionService.instruction.sample}<br/>
+                                <h:outputLabel>Instruction description: </h:outputLabel>#{instructionService.instruction.description}
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-4">
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Vehicle details</h3>
+                        </div>
+                        <div class="panel-body">
+                            <p>
+                                <h:outputLabel>License: </h:outputLabel>#{instructionService.instruction.car.license}
+                                <br/>
+                                <h:outputLabel>Brand: </h:outputLabel>#{instructionService.instruction.car.brand}
+                                <br/>
+                                <h:outputLabel>Type: </h:outputLabel>#{instructionService.instruction.car.type}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Customer details</h3>
+                        </div>
+                        <div class="panel-body">
+                            <p>
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <h:form>
+                        <div class="btn btn-group">
+                            <h:commandButton value="Start"
+                                             action="#{instructionService.startInstruction(instructionService.instruction)}"
+                                             styleClass="btn btn-primary"/>
+                            <h:commandButton value="End"
+                                             action="#{instructionService.endInstruction(instructionService.instruction)}"
+                                             styleClass="btn btn-primary"/>
+                        </div>
+                    </h:form>
+                </div>
+            </div>
+
+        </ui:define>
+    </ui:composition>
+
+
+</h:body>
+</html>

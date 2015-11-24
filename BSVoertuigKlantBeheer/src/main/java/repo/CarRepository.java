@@ -18,6 +18,11 @@ public class CarRepository extends AbstractRepository<Car> {
         return super.getAll(Car.class);
     }
 
+    @Override
+    public Car findById(Long idToFind) {
+        return super.findById(Car.class, idToFind);
+    }
+
     public Car findByLicense(String license) {
         try {
             return getEm().createNamedQuery("findByLicense", Car.class)
