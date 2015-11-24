@@ -6,6 +6,7 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
 import lombok.*;
@@ -23,14 +24,13 @@ public class Customer extends AbstractPersistentEntity implements Serializable {
 
     @NotNull
     private String firstName;
-    @NotNull
     private String middleName;
     @NotNull
     private String lastName;
     @NotNull
     private String streetName;
     @NotNull
-    private long streetNumber;
+    private String streetNumber;
     @NotNull
     private String zipCode;
     @NotNull
@@ -39,9 +39,11 @@ public class Customer extends AbstractPersistentEntity implements Serializable {
     private String phone;
     @NotNull
     private String email;
+    @Transient
+    private boolean edited = false;
 
-    @OneToOne
-    @JoinColumn(name = "CUSTOMERID")
+
+    @OneToOne(mappedBy = "customer")
     private LeasingCompany leasingCompany;
 
 }

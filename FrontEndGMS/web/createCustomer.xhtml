@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:body>
@@ -9,7 +10,92 @@
     <ui:composition template="template/template.xhtml">
         <ui:define name="content">
 
-            TODO
+            <div class="col-md-10 col-md-offset-1">
+                <h2>Add a Customer</h2>
+
+                <p>
+                    <h:form>
+                        <div class="form-group">
+                            <h:outputLabel>First Name</h:outputLabel><br/>
+                            <h:inputText id="firstName"
+                                         value="#{customerService.customer.firstName}"
+                                         p:title="Enter the First Name"
+                                         p:placeholder="eg. John "
+                                         styleClass="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <h:outputLabel>Middle Name</h:outputLabel><br/>
+                            <h:inputText id="middleName"
+                                         value="#{customerService.customer.middleName}"
+                                         p:title="Enter the Middle Name"
+                                         p:placeholder="eg. The"
+                                         styleClass="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <h:outputLabel>Last Name</h:outputLabel><br/>
+                            <h:inputText id="lastName"
+                                         value="#{customerService.customer.lastName}"
+                                         p:title="Enter the last Name"
+                                         p:placeholder="eg. Doe"
+                                         styleClass="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <h:outputLabel>Address</h:outputLabel><br/>
+                            <h:inputText id="streetName"
+                                         value="#{customerService.customer.streetName}"
+                                         p:title="Enter the streetName"
+                                         p:placeholder="eg. Bierkade"
+                                         styleClass="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <h:outputLabel>Street Number</h:outputLabel><br/>
+                            <h:inputText id="streetNumber"
+                                         value="#{customerService.customer.streetNumber}"
+                                         p:title="Enter the street Number"
+                                         p:placeholder="eg. 148t"
+                                         styleClass="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <h:outputLabel>Zip Code</h:outputLabel><br/>
+                            <h:inputText id="zipCode"
+                                         value="#{customerService.customer.zipCode}"
+                                         p:title="Enter the Zip Code"
+                                         p:placeholder="eg. 2264AW"
+                                         styleClass="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <h:outputLabel>City</h:outputLabel><br/>
+                            <h:inputText id="city"
+                                         value="#{customerService.customer.city}"
+                                         p:title="City"
+                                         p:placeholder="eg. Amsterdam"
+                                         styleClass="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <h:outputLabel>Phone</h:outputLabel><br/>
+                            <h:inputText id="phone"
+                                         value="#{customerService.customer.phone}"
+                                         p:title="Phone"
+                                         p:placeholder="eg. 012345678"
+                                         styleClass="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <h:outputLabel>Email</h:outputLabel><br/>
+                            <h:inputText id="email"
+                                         value="#{customerService.customer.email}"
+                                         p:title="Email"
+                                         p:placeholder="eg. johndoe@example.com"
+                                         styleClass="form-control"/>
+                        </div>
+
+                        <div class="form-group">
+                            <h:commandButton value="Create" action="#{customerService.createCustomer()}"
+                                             styleClass="btn btn-primary"/>
+
+                        </div>
+                    </h:form>
+                </p>
+            </div>
 
         </ui:define>
     </ui:composition>
