@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-        >
+      xmlns:f="http://java.sun.com/jsf/core">
 
 <h:body>
 
@@ -64,6 +64,75 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Activities</h3>
+                        </div>
+                        <div class="panel-body">
+
+                            <h:form>
+                                <h:dataTable id="activities" value="#{instructionService.instruction.activities}"
+                                             var="activity"
+                                             styleClass="table tabel-striped">
+                                    <h:column>
+                                        <f:facet name="header">
+                                            Assign Date
+                                        </f:facet>
+                                        #{activity.assignDate}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            Sign Off Date
+                                        </f:facet>
+                                        #{activity.signOffDate}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            Hours Spent
+                                        </f:facet>
+                                        <h:outputText value="#{activity.hoursSpent}" rendered="#{not activity.edited}"/>
+                                        <h:inputText value="#{activity.hoursSpent}" rendered="#{activity.edited}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            Activity
+                                        </f:facet>
+                                        <h:outputText value="#{activity.activities}" rendered="#{not activity.edited}"/>
+                                        <h:inputTextarea value="#{activity.activities}" rendered="#{activity.edited}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            Actions
+                                        </f:facet>
+
+                                        <div class="btn btn-group">
+                                            <h:commandButton value="Edit"
+                                                             action="#{instructionService.editActivity(activity)}"
+                                                             rendered="#{not activity.edited}"
+                                                             styleClass="btn btn-primary"/>
+                                            <h:commandButton value="Save"
+                                                             action="#{instructionService.saveActivity(activity)}"
+                                                             rendered="#{activity.edited}"
+                                                             styleClass="btn btn-primary"/>
+                                            <h:commandButton value="Remove"
+                                                             action="#{instructionService.removeActivity(activity)}"
+                                                             styleClass="btn btn-primary"/>
+                                            <h:commandButton value="Sign off"
+                                                             action="#{instructionService.signOffActivity(activity)}"
+                                                             styleClass="btn btn-primary"/>
+                                        </div>
+                                    </h:column>
+                                </h:dataTable>
+                                <h:commandButton value="Add New Activity"
+                                                 action="#{instructionService.addNewActivity()}"
+                                                 class="btn btn-primary"/>
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="col-md-12">
                     <h:form>
                         <div class="btn btn-group">
