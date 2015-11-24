@@ -28,7 +28,7 @@
                                 <f:facet name="header">
                                     Description
                                 </f:facet>
-                                #{instruction.description}
+                                <h:outputText value="#{instruction.description}" styleClass="preformatted"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
@@ -42,12 +42,9 @@
                                 </f:facet>
 
                                 <div class="btn-group">
-                                    <h:commandButton value="Start"
-                                                     action="#{instructionService.startInstruction(instruction)}"
-                                                     styleClass="btn btn-primary"/>
-                                    <h:commandButton value="End"
-                                                     action="#{instructionService.endInstruction(instruction)}"
-                                                     styleClass="btn btn-primary"/>
+                                    <h:commandButton value="Details"
+                                                     styleClass="btn btn-primary"
+                                                     action="#{instructionService.viewInstruction(instruction)}"/>
                                 </div>
                             </h:column>
                         </h:dataTable>

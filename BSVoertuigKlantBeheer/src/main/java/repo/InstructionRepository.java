@@ -19,6 +19,11 @@ public class InstructionRepository extends AbstractRepository<Instruction> {
         return super.getAll(Instruction.class);
     }
 
+    @Override
+    public Instruction findById(Long idToFind) {
+        return super.findById(Instruction.class, idToFind);
+    }
+
     /**
      * Get list of open instructions.
      *

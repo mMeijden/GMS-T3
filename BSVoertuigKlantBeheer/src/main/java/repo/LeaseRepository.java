@@ -15,4 +15,9 @@ public class LeaseRepository extends AbstractRepository<LeasingCompany> {
     public List<LeasingCompany> getAll() {
         return super.getAll(LeasingCompany.class);
     }
+
+    @Override
+    public LeasingCompany findById(Long idToFind) {
+        return super.findById(LeasingCompany.class, idToFind);
+    }
 }

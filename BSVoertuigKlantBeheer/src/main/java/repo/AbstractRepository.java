@@ -42,6 +42,13 @@ public abstract class AbstractRepository<T extends AbstractPersistentEntity> {
     public abstract List<T> getAll();
 
     /**
+     * Find an item by it's id attribute.
+     * @param idToFind id of object
+     * @return object
+     */
+    public abstract T findById(final Long idToFind);
+
+    /**
      * Persist all items in this repository.
      */
     public void save() {
