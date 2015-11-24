@@ -48,16 +48,6 @@ public class InstructionService {
     private Activity activity;
 
     /**
-     * Constructor for testing purposes.
-     *
-     * @param ipb Mock of InstructionProcessBean
-     */
-    public InstructionService(InstructionProcessBean ipb, InstructionRequestBean irb) {
-        this.instructionProcessBean = ipb;
-        this.instructionRequestBean = irb;
-    }
-
-    /**
      * Initialize bean.
      */
     @PostConstruct

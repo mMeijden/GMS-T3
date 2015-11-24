@@ -53,4 +53,11 @@ public class InstructionRequestBeanTest {
         instructionRequestBean.alterInstructionStatus(instruction, newStatus);
         assertThat(instruction.getStatus(), is(newStatus));
     }
+
+    @Test
+    public void testFindInstructionById(){
+        instruction.setId(1l);
+        when(instructionRepository.findById(1l)).thenReturn(instruction);
+        assertThat(instructionRepository.findById(1l), is(instruction));
+    }
 }
