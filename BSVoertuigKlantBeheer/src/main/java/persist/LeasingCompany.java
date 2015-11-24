@@ -4,6 +4,7 @@ package persist;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
@@ -22,12 +23,13 @@ public class LeasingCompany extends AbstractPersistentEntity implements Serializ
 
     @NotNull
     private String companyName;
-    @OneToOne(mappedBy = "leasingCompany")
+
+    @JoinColumn(name = "CUSTOMERID")
     private Customer customer;
     @NotNull
     private String streetName;
     @NotNull
-    private long streetNumber;
+    private String streetNumber;
     @NotNull
     private String zipCode;
     @NotNull

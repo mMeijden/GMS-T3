@@ -11,44 +11,45 @@
         <ui:define name="content">
 
             <div class="col-md-10 col-md-offset-1">
-                <h2>Instruction overview</h2>
+                <h2>Customer Overview</h2>
 
                 <p>
                     <h:form>
-                        <h:dataTable id="instructionTable" value="#{instructionService.openInstructions}"
-                                     var="instruction"
+                        <h:dataTable id="customerOverview" value="#{customerService.getAllCustomers()}"
+                                     var="cust"
                                      class="table table-striped">
                             <h:column>
                                 <f:facet name="header">
-                                    Car
+                                    Customer
                                 </f:facet>
-                                #{instruction.car.license} #{instruction.car.brand} #{instruction.car.type}
+                                #{cust.firstName} #{cust.middleName} #{cust.lastName}
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
-                                    Description
+                                    Address
                                 </f:facet>
-                                #{instruction.description}
+                                #{cust.streetName} #{cust.streetNumber}
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
-                                    Status
+                                    Email
                                 </f:facet>
-                                #{instruction.status}
+                                #{cust.email}
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
-                                    Actions
+                                    Phone
                                 </f:facet>
+                                #{cust.phone}
+                            </h:column>
+                            <h:column>
+                            <div class="btn-group">
+                                    <f:facet name="header">Edit</f:facet>
+                                <h:commandButton value="View All Details"
+                                                 action="#{customerService.viewCustomer(cust)}"
+                                                 styleClass="btn btn-primary"/>
 
-                                <div class="btn-group">
-                                    <h:commandButton value="Start"
-                                                     action="#{instructionService.startInstruction(instruction)}"
-                                                     styleClass="btn btn-primary"/>
-                                    <h:commandButton value="End"
-                                                     action="#{instructionService.endInstruction(instruction)}"
-                                                     styleClass="btn btn-primary"/>
-                                </div>
+                            </div>
                             </h:column>
                         </h:dataTable>
                     </h:form>
