@@ -2,6 +2,7 @@ package persist;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 
 import javax.persistence.*;
@@ -52,6 +53,9 @@ public class Instruction extends AbstractPersistentEntity implements Serializabl
     @ManyToOne
     @JoinColumn(name = "CAR_ID")
     private Car car;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "instruction")
+    private List<Activity> activities;
 
     /**
      * Constructor.
