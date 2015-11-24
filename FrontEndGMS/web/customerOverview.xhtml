@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<h:body>
+
+    <ui:composition template="template/template.xhtml">
+        <ui:define name="content">
+
+            <div class="col-md-10 col-md-offset-1">
+                <h2>Instruction overview</h2>
+
+                <p>
+                    <h:form>
+                        <h:dataTable id="instructionTable" value="#{instructionService.openInstructions}"
+                                     var="instruction"
+                                     class="table table-striped">
+                            <h:column>
+                                <f:facet name="header">
+                                    Car
+                                </f:facet>
+                                #{instruction.car.license} #{instruction.car.brand} #{instruction.car.type}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    Description
+                                </f:facet>
+                                #{instruction.description}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    Status
+                                </f:facet>
+                                #{instruction.status}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    Actions
+                                </f:facet>
+
+                                <div class="btn-group">
+                                    <h:commandButton value="Start"
+                                                     action="#{instructionService.startInstruction(instruction)}"
+                                                     styleClass="btn btn-primary"/>
+                                    <h:commandButton value="End"
+                                                     action="#{instructionService.endInstruction(instruction)}"
+                                                     styleClass="btn btn-primary"/>
+                                </div>
+                            </h:column>
+                        </h:dataTable>
+                    </h:form>
+                </p>
+            </div>
+
+        </ui:define>
+    </ui:composition>
+
+
+</h:body>
+</html>
