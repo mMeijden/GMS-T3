@@ -1,12 +1,17 @@
 package repo;
 
 import java.util.ArrayList;
+import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -67,11 +72,6 @@ public class ActivityRepositoryTest {
         when(tq.getSingleResult()).thenReturn(activity);
 
         assertThat(ar.findById(1l), is(activity));
-    }
-
-    @Test
-    public void testUpdate(){
-        ar.update(activity);
     }
 
     @Test
