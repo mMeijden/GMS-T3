@@ -1,5 +1,7 @@
 package beans;
 
+import javax.faces.context.FacesContext;
+
 import example.ApkCaller;
 import org.junit.Before;
 import org.junit.Test;
@@ -47,7 +49,7 @@ public class InstructionProcessBeanTest {
     public void testExecuteProcessCorrect() throws Exception {
         when(carRequestBean.findByLicense(license)).thenReturn(car);
         when(instructionRequestBean.createInstruction(instruction)).thenReturn(true);
-        assertThat(instructionProcessBean.executeProcess(email, license, instruction), is("instructionConfirmed"));
+        assertThat(instructionProcessBean.executeProcess(email, license, instruction), is("instructionOverview"));
     }
 
     @Test

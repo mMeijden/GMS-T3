@@ -49,7 +49,7 @@ public class InstructionProcessBean {
         } else {
             createInstruction(car, instruction);
         }
-        return FacesContext.getCurrentInstance().getExternalContext().getApplicationContextPath() + "/customerOverview.xhtml";
+        return "instructionOverview";
     }
 
     /**
