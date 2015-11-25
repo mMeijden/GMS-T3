@@ -51,7 +51,7 @@ public class InstructionProcessBean {
         } else {
             createInstruction(car, instruction);
         }
-        return "instructionConfirmed";
+        return "instructionOverview";
     }
 
     /**

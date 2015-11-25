@@ -1,10 +1,9 @@
 package repo;
 
-import java.util.List;
+import persist.Activity;
 
 import javax.ejb.Stateful;
-
-import persist.Activity;
+import java.util.List;
 
 /**
  * Created by Remco on 24-11-2015.

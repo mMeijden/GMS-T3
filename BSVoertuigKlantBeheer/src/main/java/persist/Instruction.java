@@ -1,18 +1,18 @@
 package persist;
 
-import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
-import java.util.Scanner;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import util.InstructionStatus;
 
 import javax.persistence.*;
-import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-
-import lombok.*;
-import util.InstructionStatus;
+import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Remco on 19-11-2015.

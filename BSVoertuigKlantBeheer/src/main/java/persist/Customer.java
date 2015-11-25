@@ -1,13 +1,12 @@
 package persist;
 
 
-import java.io.Serializable;
-import java.util.List;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-
-import lombok.*;
+import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by @author Matthijs van der Meijden on 19-11-2015.

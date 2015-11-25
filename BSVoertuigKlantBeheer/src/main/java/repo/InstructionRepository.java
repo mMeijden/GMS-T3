@@ -1,12 +1,11 @@
 package repo;
 
-import java.util.List;
+import persist.Instruction;
+import util.InstructionStatus;
 
 import javax.ejb.Stateful;
 import javax.persistence.NoResultException;
-
-import persist.Instruction;
-import util.InstructionStatus;
+import java.util.List;
 
 /**
  * Created by Remco on 19-11-2015.

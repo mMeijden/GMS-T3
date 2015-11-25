@@ -2,7 +2,6 @@ package beans;
 
 import persist.Car;
 import persist.Customer;
-import persist.Instruction;
 import persist.LeasingCompany;
 
 import javax.annotation.PostConstruct;

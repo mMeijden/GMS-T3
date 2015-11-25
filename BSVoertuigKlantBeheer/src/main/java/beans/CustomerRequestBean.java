@@ -1,16 +1,14 @@
 package beans;
 
-import java.io.Serializable;
-import java.sql.SQLDataException;
-import java.util.List;
-
-import javax.ejb.Stateful;
-import javax.inject.Inject;
-
 import lombok.Getter;
 import lombok.Setter;
 import persist.Customer;
 import repo.CustomerRepository;
+
+import javax.ejb.Stateful;
+import javax.inject.Inject;
+import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by @author Matthijs van der Meijden on 19-11-2015.

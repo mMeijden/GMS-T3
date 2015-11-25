@@ -13,6 +13,13 @@
             <div class="col-md-10 col-md-offset-1">
                 <h2>Add a Car</h2>
 
+                <div class="messagecolor">
+                    <h:messages showSummary="true"
+                                showDetail="false"
+                                errorStyle="color: #d20005"
+                                infoStyle="color: blue"/>
+                </div>
+
                 <p>
                     <h:form>
                         <div class="form-group">
@@ -21,6 +28,9 @@
                                          value="#{carService.car.license}"
                                          p:title="Enter the license plate"
                                          p:placeholder="eg. 27NXTX"
+                                         p:minLength="6"
+                                         p:maxLength="6"
+                                         p:required="true"
                                          styleClass="form-control"/>
                         </div>
                         <div class="form-group">
@@ -29,6 +39,8 @@
                                          value="#{carService.car.brand}"
                                          p:title="Enter the car brand"
                                          p:placeholder="eg. PEUGEOT"
+                                         p:required="true"
+                                         p:maxLength="50"
                                          styleClass="form-control"/>
                         </div>
                         <div class="form-group">
@@ -37,6 +49,8 @@
                                          value="#{carService.car.type}"
                                          p:title="Enter the car type"
                                          p:placeholder="307 1.6V HATCHBACK"
+                                         p:required="true"
+                                         p:maxLength="50"
                                          styleClass="form-control"/>
                         </div>
 

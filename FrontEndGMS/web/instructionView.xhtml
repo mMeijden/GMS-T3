@@ -12,7 +12,7 @@
         <ui:define name="content">
 
             <div class="col-md-10 col-md-offset-1">
-                <h2>Instruction ##{instructionService.instruction.id}</h2>
+                <h2>Instruction ##{instructionViewService.instruction.id}</h2>
 
                 <div class="col-md-4">
                     <div class="panel panel-default">
@@ -20,16 +20,16 @@
                             <h3 class="panel-title">Instruction details</h3>
                         </div>
                         <div class="panel-body">
-                            <h4>Status: #{instructionService.instruction.status}</h4>
+                            <h4>Status: #{instructionViewService.instruction.status}</h4>
 
                             <p>
-                                <h:outputLabel>Assign Date: </h:outputLabel>#{instructionService.instruction.assignDate}
+                                <h:outputLabel>Assign Date: </h:outputLabel>#{instructionViewService.instruction.assignDate}
                                 <br/>
-                                <h:outputLabel>Mileage: </h:outputLabel>#{instructionService.instruction.mileage}
+                                <h:outputLabel>Mileage: </h:outputLabel>#{instructionViewService.instruction.mileage}
                                 <br/>
-                                <h:outputLabel>APK: </h:outputLabel>#{instructionService.instruction.apk}<br/>
-                                <h:outputLabel>Sample: </h:outputLabel>#{instructionService.instruction.sample}<br/>
-                                <h:outputLabel>Instruction description: </h:outputLabel>#{instructionService.instruction.description}
+                                <h:outputLabel>APK: </h:outputLabel>#{instructionViewService.instruction.apk}<br/>
+                                <h:outputLabel>Sample: </h:outputLabel>#{instructionViewService.instruction.sample}<br/>
+                                <h:outputLabel>Instruction description: </h:outputLabel>#{instructionViewService.instruction.description}
                             </p>
                         </div>
                     </div>
@@ -43,11 +43,11 @@
                         </div>
                         <div class="panel-body">
                             <p>
-                                <h:outputLabel>License: </h:outputLabel>#{instructionService.instruction.car.license}
+                                <h:outputLabel>License: </h:outputLabel>#{instructionViewService.instruction.car.license}
                                 <br/>
-                                <h:outputLabel>Brand: </h:outputLabel>#{instructionService.instruction.car.brand}
+                                <h:outputLabel>Brand: </h:outputLabel>#{instructionViewService.instruction.car.brand}
                                 <br/>
-                                <h:outputLabel>Type: </h:outputLabel>#{instructionService.instruction.car.type}
+                                <h:outputLabel>Type: </h:outputLabel>#{instructionViewService.instruction.car.type}
                             </p>
                         </div>
                     </div>
@@ -73,7 +73,7 @@
                         <div class="panel-body">
 
                             <h:form>
-                                <h:dataTable id="activities" value="#{instructionService.instruction.activities}"
+                                <h:dataTable id="activities" value="#{instructionViewService.instruction.activities}"
                                              var="activity"
                                              styleClass="table tabel-striped">
                                     <h:column>
@@ -109,24 +109,24 @@
 
                                         <div class="btn btn-group">
                                             <h:commandButton value="Edit"
-                                                             action="#{instructionService.editActivity(activity)}"
+                                                             action="#{instructionViewService.editActivity(activity)}"
                                                              rendered="#{not activity.edited}"
                                                              styleClass="btn btn-primary"/>
                                             <h:commandButton value="Save"
-                                                             action="#{instructionService.saveActivity(activity)}"
+                                                             action="#{instructionViewService.saveActivity(activity)}"
                                                              rendered="#{activity.edited}"
                                                              styleClass="btn btn-primary"/>
                                             <h:commandButton value="Remove"
-                                                             action="#{instructionService.removeActivity(activity)}"
+                                                             action="#{instructionViewService.removeActivity(activity)}"
                                                              styleClass="btn btn-primary"/>
                                             <h:commandButton value="Sign off"
-                                                             action="#{instructionService.signOffActivity(activity)}"
+                                                             action="#{instructionViewService.signOffActivity(activity)}"
                                                              styleClass="btn btn-primary"/>
                                         </div>
                                     </h:column>
                                 </h:dataTable>
                                 <h:commandButton value="Add New Activity"
-                                                 action="#{instructionService.addNewActivity()}"
+                                                 action="#{instructionViewService.addNewActivity()}"
                                                  class="btn btn-primary"/>
                             </h:form>
                         </div>
@@ -137,10 +137,10 @@
                     <h:form>
                         <div class="btn btn-group">
                             <h:commandButton value="Start"
-                                             action="#{instructionService.startInstruction(instructionService.instruction)}"
+                                             action="#{instructionViewService.startInstruction()}"
                                              styleClass="btn btn-primary"/>
                             <h:commandButton value="End"
-                                             action="#{instructionService.endInstruction(instructionService.instruction)}"
+                                             action="#{instructionViewService.endInstruction()}"
                                              styleClass="btn btn-primary"/>
                         </div>
                     </h:form>

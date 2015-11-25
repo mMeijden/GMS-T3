@@ -1,6 +1,5 @@
 package beans;
 
-import example.ApkCaller;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

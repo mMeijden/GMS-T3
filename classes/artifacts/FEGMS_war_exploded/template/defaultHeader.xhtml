@@ -17,14 +17,19 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.xhtml">GMS</a>
+                    <a class="navbar-brand" href="#{request.contextPath}/index.xhtml">GMS</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li><a href="#{request.contextPath}/index.xhtml">Home<span class="sr-only">(current)</span></a>
-                        </li>
+                        <li><a href="#{request.contextPath}/index.xhtml">Home<span class="sr-only">(current)</span></a></li>
+                        <li><a href="#{request.contextPath}/instructionOverview.xhtml">Instructions</a></li>
+                        <li><a href="#{request.contextPath}/customerOverview.xhtml">Customers</a></li>
+                        <li><a href="#{request.contextPath}/createInstruction.xhtml">Create Instruction</a></li>
+                        <li><a href="#{request.contextPath}/createCar.xhtml">Create Car</a> </li>
+                        <li><a href="#{request.contextPath}/createCustomer.xhtml">Create Customer</a> </li>
+                        <li><a href="#{request.contextPath}/createLeasingCompany.xhtml">Create Company</a></li>
                     </ul>
                 </div>
             </div>

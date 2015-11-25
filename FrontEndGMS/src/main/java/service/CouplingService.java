@@ -1,12 +1,8 @@
 package service;
 
-import beans.CarRequestBean;
 import beans.CouplingProcessBean;
-import beans.CustomerRequestBean;
 import lombok.Getter;
 import lombok.Setter;
-import persist.Car;
-import persist.Customer;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;

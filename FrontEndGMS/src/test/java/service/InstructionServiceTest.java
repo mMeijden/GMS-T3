@@ -1,14 +1,17 @@
 package service;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
+import beans.ActivityRequestBean;
 import beans.InstructionProcessBean;
 import beans.InstructionRequestBean;
 import org.junit.Before;
 import org.junit.Test;
 import persist.Instruction;
+
+import javax.faces.validator.ValidatorException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -22,13 +25,20 @@ public class InstructionServiceTest {
 
     private InstructionProcessBean instructionProcessBean;
     private InstructionRequestBean instructionRequestBean;
+    private ActivityRequestBean activityRequestBean;
     private InstructionService instructionService;
+    private SimpleDateFormat df;
 
     @Before
     public void setUp() {
         instructionProcessBean = mock(InstructionProcessBean.class);
         instructionRequestBean = mock(InstructionRequestBean.class);
-        instructionService = new InstructionService(instructionProcessBean, instructionRequestBean);
+        activityRequestBean = mock(ActivityRequestBean.class);
+        instructionService = new InstructionService();
+        instructionService.setInstructionProcessBean(instructionProcessBean);
+        instructionService.setInstructionRequestBean(instructionRequestBean);
+        instructionService.setActivityRequestBean(activityRequestBean);
+        df = new SimpleDateFormat("dd-MM-yyyy HH:mm");
     }
 
     @Test
@@ -38,38 +48,58 @@ public class InstructionServiceTest {
     }
 
     @Test
-    public void testIsValidAssignDateNoAPK() throws ParseException {
-        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy HH:mm");
-
+    public void testIsValidAssignDateNoAPKValid() throws ParseException {
         Date dateNoAPK = df.parse("22-11-2500 15:00");
         Instruction instruction = new Instruction(dateNoAPK, 0, false, "Test");
         instructionService.setInstruction(instruction);
-        assertThat(instructionService.isValidAssignDate(), is(true));
+        assertThat(instructionService.isValidAssignDate(null, null, dateNoAPK), is(true));
+    }
 
+    @Test(expected = ValidatorException.class)
+    public void testIsValidAssignDateNoAPKEarly() throws ParseException {
         Date dateEarly = df.parse("22-11-2500 06:59");
-        instruction.setAssignDate(dateEarly);
-        assertThat(instructionService.isValidAssignDate(), is(false));
+        Instruction instruction = new Instruction(dateEarly, 0, false, "Test");
+        instructionService.setInstruction(instruction);
+        assertThat(instructionService.isValidAssignDate(null, null, dateEarly), is(false));
+    }
 
+    @Test(expected = ValidatorException.class)
+    public void testIsValidAssignDateNoAPKLate() throws ParseException {
         Date dateLate = df.parse("22-11-2500 18:00");
-        instruction.setAssignDate(dateLate);
-        assertThat(instructionService.isValidAssignDate(), is(false));
+        Instruction instruction = new Instruction(dateLate, 0, false, "Test");
+        instructionService.setInstruction(instruction);
+        assertThat(instructionService.isValidAssignDate(null, null, dateLate), is(false));
     }
 
     @Test
-    public void testIsValidAssignDateAPK() throws ParseException {
-        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy HH:mm");
-
+    public void testIsValidAssignDateAPKValid() throws ParseException {
         Date dateAPK = df.parse("22-11-2500 11:00");
         Instruction instruction = new Instruction(dateAPK, 0, true, "Test");
         instructionService.setInstruction(instruction);
-        assertThat(instructionService.isValidAssignDate(), is(true));
+        assertThat(instructionService.isValidAssignDate(null, null, dateAPK), is(true));
+    }
 
+    @Test(expected = ValidatorException.class)
+    public void testIsValidAssignDateAPKEarly() throws ParseException {
         Date dateEarly = df.parse("22-11-2500 06:59");
-        instruction.setAssignDate(dateEarly);
-        assertThat(instructionService.isValidAssignDate(), is(false));
+        Instruction instruction = new Instruction(dateEarly, 0, true, "Test");
+        instructionService.setInstruction(instruction);
+        assertThat(instructionService.isValidAssignDate(null, null, dateEarly), is(false));
+    }
 
+    @Test(expected = ValidatorException.class)
+    public void testIsValidAssignDateAPKLate() throws ParseException {
         Date dateAPKLate = df.parse("22-11-2500 13:00");
-        instruction.setAssignDate(dateAPKLate);
-        assertThat(instructionService.isValidAssignDate(), is(false));
+        Instruction instruction = new Instruction(dateAPKLate, 0, true, "Test");
+        instructionService.setInstruction(instruction);
+        assertThat(instructionService.isValidAssignDate(null, null, dateAPKLate), is(false));
+    }
+
+    @Test
+    public void testGetOpenInstructions(){
+        ArrayList<Instruction> list = new ArrayList<>();
+        list.add(new Instruction());
+        when(instructionRequestBean.getOpenInstructions()).thenReturn(list);
+        assertThat(instructionService.getOpenInstructions(), is(list));
     }
 }

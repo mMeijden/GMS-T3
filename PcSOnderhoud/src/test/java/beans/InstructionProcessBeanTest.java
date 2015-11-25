@@ -9,9 +9,7 @@ import util.InstructionStatus;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 /**
  * Created by Remco on 21-11-2015.
@@ -47,7 +45,7 @@ public class InstructionProcessBeanTest {
     public void testExecuteProcessCorrect() throws Exception {
         when(carRequestBean.findByLicense(license)).thenReturn(car);
         when(instructionRequestBean.createInstruction(instruction)).thenReturn(true);
-        assertThat(instructionProcessBean.executeProcess(email, license, instruction), is("instructionConfirmed"));
+        assertThat(instructionProcessBean.executeProcess(email, license, instruction), is("instructionOverview"));
     }
 
     @Test

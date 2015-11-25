@@ -1,15 +1,14 @@
 package beans;
 
 
-import java.io.Serializable;
-
-import javax.ejb.Stateful;
-import javax.inject.Inject;
-
 import lombok.Getter;
 import lombok.Setter;
 import persist.LeasingCompany;
 import repo.LeaseRepository;
+
+import javax.ejb.Stateful;
+import javax.inject.Inject;
+import java.io.Serializable;
 
 /**
  * Created by @author Matthijs van der Meijden on 19-11-2015.

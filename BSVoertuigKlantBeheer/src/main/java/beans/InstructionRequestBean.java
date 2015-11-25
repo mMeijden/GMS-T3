@@ -1,17 +1,16 @@
 package beans;
 
-import java.io.Serializable;
-import java.util.List;
-
-import javax.ejb.Stateful;
-import javax.inject.Inject;
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import persist.Instruction;
 import repo.InstructionRepository;
 import util.InstructionStatus;
+
+import javax.ejb.Stateful;
+import javax.inject.Inject;
+import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by Remco on 19-11-2015.
@@ -69,5 +68,9 @@ public class InstructionRequestBean implements Serializable {
 
     public Instruction findInstructionById(Long id){
         return instructionRepository.findById(id);
+    }
+
+    public void updateInstruction(Instruction instruction){
+        instructionRepository.update(instruction);
     }
 }

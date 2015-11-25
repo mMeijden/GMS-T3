@@ -1,12 +1,11 @@
 package example;
 
-import java.security.SecureRandom;
+import persist.Car;
 
 import javax.ejb.Stateless;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
-
-import persist.Car;
+import java.security.SecureRandom;
 
 /**
  * Created by @author Matthijs van der Meijden on 23-11-2015.
