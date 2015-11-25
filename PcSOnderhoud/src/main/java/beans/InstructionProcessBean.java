@@ -110,7 +110,7 @@ public class InstructionProcessBean {
      * @param instruction the instruction that is updated.
      */
     public void endInstruction(Instruction instruction) {
-        if (!instruction.isApk()) {
+        if (!instruction.isApk() || instruction.getStatus() == InstructionStatus.SAMPLE) {
             instructionRequestBean.alterInstructionStatus(instruction, InstructionStatus.DONE);
         } else {
             if (apkCaller.markReadyForSample(instruction.getCar())) { //SOAP CALL TO RDW

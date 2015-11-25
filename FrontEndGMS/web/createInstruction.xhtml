@@ -47,18 +47,6 @@
                                          styleClass="form-control"/>
                         </div>
                         <div class="form-group">
-                            <h:outputLabel>Assign Date</h:outputLabel><br/>
-                            <pf:calendar id="date"
-                                         value="#{instructionService.instruction.assignDate}"
-                                         pf:pattern="dd-MM-yyyy HH:mm"
-                                         pf:required="true"
-                                         pf:title="Enter the assign date"
-                                         pf:effect="fold"
-                                         pf:mask="true"
-                                         pf:mindate="#{instructionService.today}"
-                                         validator="#{instructionService.isValidAssignDate}"/>
-                        </div>
-                        <div class="form-group">
                             <h:outputLabel>Mileage</h:outputLabel><br/>
                             <h:inputText id="mileage"
                                          value="#{instructionService.instruction.mileage}"
@@ -73,6 +61,18 @@
                                 <f:selectItem itemValue="#{true}" itemLabel="Yes"/>
                                 <f:selectItem itemValue="#{false}" itemLabel="No"/>
                             </h:selectOneRadio>
+                        </div>
+                        <div class="form-group">
+                            <h:outputLabel>Assign Date</h:outputLabel><br/>
+                            <pf:calendar id="date"
+                                         value="#{instructionService.instruction.assignDate}"
+                                         pf:pattern="dd-MM-yyyy HH:mm"
+                                         pf:required="true"
+                                         pf:title="Enter the assign date"
+                                         pf:effect="fold"
+                                         pf:mask="true"
+                                         pf:mindate="#{instructionService.today}"
+                                         validator="#{instructionService.isValidAssignDate}"/>
                         </div>
                         <div class="form-group">
                             <h:outputLabel>Description</h:outputLabel>
