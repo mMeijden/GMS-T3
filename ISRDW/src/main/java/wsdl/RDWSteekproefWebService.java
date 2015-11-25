@@ -1,5 +1,5 @@
 
-package rdwCall;
+package wsdl;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -32,8 +32,8 @@ public interface RDWSteekproefWebService {
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "steekproef", targetNamespace = "http://steekproef.rdw/", className = "rdwCall.Steekproef")
-    @ResponseWrapper(localName = "steekproefResponse", targetNamespace = "http://steekproef.rdw/", className = "rdwCall.SteekproefResponse")
+    @RequestWrapper(localName = "steekproef", targetNamespace = "http://steekproef.rdw/", className = "wsdl.Steekproef")
+    @ResponseWrapper(localName = "steekproefResponse", targetNamespace = "http://steekproef.rdw/", className = "wsdl.SteekproefResponse")
     @Action(input = "http://steekproef.rdw/RDWSteekproefWebService/steekproefRequest", output = "http://steekproef.rdw/RDWSteekproefWebService/steekproefResponse")
     public Boolean steekproef(
         @WebParam(name = "kenteken", targetNamespace = "")

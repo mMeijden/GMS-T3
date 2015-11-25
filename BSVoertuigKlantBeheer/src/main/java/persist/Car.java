@@ -35,7 +35,7 @@ public class Car extends AbstractPersistentEntity implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "car")
     private List<Instruction> instructions;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "OWNER_ID")
     private Customer customer;
 

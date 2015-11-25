@@ -1,11 +1,12 @@
 package example;
 
-import persist.Car;
-
 import javax.ejb.Stateless;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
-import java.security.SecureRandom;
+
+import persist.Car;
+import wsdl.RDWSteekproefWebService;
+import wsdl.RDWSteekproefWebService_Service;
 
 /**
  * Created by @author Matthijs van der Meijden on 23-11-2015.
@@ -16,14 +17,9 @@ public class ApkCaller {
 
     @WebMethod
     public boolean markReadyForSample(Car car) {
-        //car unused yet. Should persist license plate to RDW.
-        SecureRandom sample = new SecureRandom();
-        int getal = sample.nextInt(2);
-        if (getal == 1) {
-            return true;
-        } else {
-            return false;
-        }
-
+        RDWSteekproefWebService_Service service = new RDWSteekproefWebService_Service();
+        RDWSteekproefWebService port = service.getRDWSteekproefWebServicePort();
+        boolean sample = port.steekproef(car.getLicense());
+        return sample;
     }
 }

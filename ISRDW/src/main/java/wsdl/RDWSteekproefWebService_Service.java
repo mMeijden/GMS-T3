@@ -1,10 +1,14 @@
 
-package rdwCall;
+package wsdl;
 
-import javax.xml.namespace.QName;
-import javax.xml.ws.*;
 import java.net.MalformedURLException;
 import java.net.URL;
+import javax.xml.namespace.QName;
+import javax.xml.ws.Service;
+import javax.xml.ws.WebEndpoint;
+import javax.xml.ws.WebServiceClient;
+import javax.xml.ws.WebServiceException;
+import javax.xml.ws.WebServiceFeature;
 
 
 /**
@@ -13,7 +17,7 @@ import java.net.URL;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "RDWSteekproefWebService", targetNamespace = "http://steekproef.rdw/", wsdlLocation = "file:/C:/Users/luppi/Desktop/RDWSteekproefWebService/RDWSteekproefWebService.wsdl")
+@WebServiceClient(name = "RDWSteekproefWebService", targetNamespace = "http://steekproef.rdw/", wsdlLocation = "http://localhost:10080/rdw/RDWSteekproefWebService?wsdl")
 public class RDWSteekproefWebService_Service
     extends Service
 {
@@ -26,7 +30,7 @@ public class RDWSteekproefWebService_Service
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("file:/C:/Users/luppi/Desktop/RDWSteekproefWebService/RDWSteekproefWebService.wsdl");
+            url = new URL("http://localhost:10080/rdw/RDWSteekproefWebService?wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

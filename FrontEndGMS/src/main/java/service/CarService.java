@@ -1,6 +1,7 @@
 package service;
 
 import beans.CarRequestBean;
+import beans.CustomerRequestBean;
 import lombok.Getter;
 import lombok.Setter;
 import persist.Car;
@@ -25,7 +26,8 @@ public class CarService implements Serializable {
 
     @EJB
     private CarRequestBean carRequestBean;
-
+    @EJB
+    private CustomerRequestBean customerRequestBean;
 
 
 
@@ -39,9 +41,13 @@ public class CarService implements Serializable {
      * Add car too DB.
      * @return boolean succeeded
      */
-    public boolean addCar()
+    public void addCar()
     {
-        return carRequestBean.addCar(car);
+        Customer customer = customerRequestBean.findByEmail(car.getCustomer().getEmail());
+        customer.addCarToList(car);
+        car.setCustomer(customer);
+        customerRequestBean.updateCustomer(customer);
+//        return carRequestBean.addCar(car);
     }
 
 }
