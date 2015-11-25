@@ -1,16 +1,16 @@
 package beans;
 
-import javax.ejb.EJB;
-import javax.ejb.Stateful;
-import javax.inject.Inject;
-
 import example.ApkCaller;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import persist.Car;
+import persist.Customer;
 import persist.Instruction;
 import util.InstructionStatus;
+
+import javax.ejb.EJB;
+import javax.ejb.Stateful;
 
 /**
  * Created by Remco on 19-11-2015.
@@ -24,6 +24,8 @@ import util.InstructionStatus;
 public class InstructionProcessBean {
 
     @EJB
+    private CustomerRequestBean customerRequestBean;
+    @EJB
     private InstructionRequestBean instructionRequestBean;
     @EJB
     private CarRequestBean carRequestBean;
@@ -32,7 +34,8 @@ public class InstructionProcessBean {
 
     private String returnPage;
     private Car car;
-//    private Customer customer;
+    private Customer customer;
+
 
     /**
      * If customer and car exist create new Instruction.
@@ -58,16 +61,15 @@ public class InstructionProcessBean {
      * @return boolean exists
      */
     private boolean customerExists(String email) {
-//        TODO: Uncomment once customers are implemented and modify unitTest
-//        customer = customerRequestBean.findbyEmail(email);
-//        if (customer == null){
-//            returnPage = "../customer/createCustomer.xhtml";
-//            return false;
-//        }
-//        else{
-//            return true;
-//        }
-        return true;
+
+        customer = customerRequestBean.findByEmail(email);
+        if (customer == null) {
+            returnPage = "createCustomer";
+            return false;
+        } else {
+            return true;
+        }
+
     }
 
     /**

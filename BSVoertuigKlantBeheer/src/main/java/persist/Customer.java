@@ -2,11 +2,9 @@ package persist;
 
 
 import java.io.Serializable;
+import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Transient;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 import lombok.*;
@@ -18,8 +16,15 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "GMS_CUSTOMER")
 @Entity
 @Builder
+@NamedQueries({
+        @NamedQuery(
+                name = "findByEmail",
+                query = "SELECT c FROM Customer c WHERE c.email = :email"
+        )
+})
 public class Customer extends AbstractPersistentEntity implements Serializable {
 
     @NotNull
@@ -39,11 +44,14 @@ public class Customer extends AbstractPersistentEntity implements Serializable {
     private String phone;
     @NotNull
     private String email;
+
     @Transient
     private boolean edited = false;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
+    private List<Car> cars;
 
-    @OneToOne(mappedBy = "customer")
-    private LeasingCompany leasingCompany;
-
+    public void addCarToList(Car car){
+        cars.add(car);
+    }
 }

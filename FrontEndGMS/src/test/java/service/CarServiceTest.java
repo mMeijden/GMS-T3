@@ -27,11 +27,11 @@ public class CarServiceTest {
         car = new Car();
     }
 
-    @Test
-    public void testAddCar(){
-        when(carRequestBean.addCar(car)).thenReturn(true);
-
-        carService.setCar(car);
-        assertThat(carService.addCar(), is(true));
-    }
+//    @Test
+//    public void testAddCar(){
+//        when(carRequestBean.addCar(car)).thenReturn(true);
+//
+//        carService.setCar(car);
+//        assertThat(carService.addCar(), is(true));
+//    }
 }

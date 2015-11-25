@@ -45,4 +45,11 @@ public class CustomerRequestBean implements Serializable {
     public void updateCustomer(Customer customer){
         customerRepository.update(customer);
     }
+
+    public Customer findByEmail(String email) {
+        Customer customer = customerRepository.findByEmail(email);
+        return customerRepository.findByEmail(email);
+    }
+
+
 }

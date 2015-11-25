@@ -32,6 +32,10 @@ public class CarRequestBean implements Serializable {
         return true;
     }
 
+    public void updateCar(Car car){
+        carRepository.update(car);
+    }
+
     /**
      * Find a car by it's license number
      *

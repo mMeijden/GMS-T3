@@ -7,8 +7,12 @@ import persist.Customer;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+
 import javax.enterprise.context.SessionScoped;
+
+import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -22,6 +26,7 @@ import java.util.List;
 public class CustomerService implements Serializable {
 
     private Customer customer;
+
 
     @EJB
     private CustomerRequestBean customerRequestBean;
@@ -55,10 +60,11 @@ public class CustomerService implements Serializable {
         customerRequestBean.updateCustomer(customer);
     }
 
-
     public String viewCustomer(Customer customer) {
-        this.customer = customer;
+        this.customer = new Customer();
+        this.customer = customerRequestBean.findByEmail(customer.getEmail());
         return "viewCustomer";
 
     }
+
 }

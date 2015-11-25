@@ -12,7 +12,7 @@ import lombok.Setter;
 @Setter
 @MappedSuperclass
 public class GenericCustomer extends AbstractPersistentEntity {
-
+    //TODO; Refactor this class to 0
     private String streetName;
     private Long streetNumber;
     private String zipCode;

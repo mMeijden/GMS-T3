@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <h:body>
 
@@ -39,11 +39,18 @@
                                          p:placeholder="307 1.6V HATCHBACK"
                                          styleClass="form-control"/>
                         </div>
+                        <div class="form-group">
+                            <h:outputLabel>Owner</h:outputLabel><br/>
+                            <h:inputText id="Owner"
+                                         value="#{carService.car.customer.email}"
+                                         p:title="Enter the emailaddress"
+                                         p:placeholder="johndoe@example.com"
+                                         styleClass="form-control"/>
+                        </div>
 
                         <div class="form-group">
-                            <h:commandButton value="Create" action="#{carService.addCar()}"
+                            <h:commandButton value="Create without Owner" action="#{carService.addCar()}"
                                              styleClass="btn btn-primary"/>
-
                         </div>
                     </h:form>
                 </p>

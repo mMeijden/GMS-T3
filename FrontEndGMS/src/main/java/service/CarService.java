@@ -11,6 +11,7 @@ import beans.CarRequestBean;
 import lombok.Getter;
 import lombok.Setter;
 import persist.Car;
+import persist.Customer;
 
 /**
  * Created by @author Matthijs van der Meijden on 19-11-2015.
@@ -27,9 +28,12 @@ public class CarService implements Serializable {
     private CarRequestBean carRequestBean;
 
 
+
+
     @PostConstruct
     public void init() {
         car = new Car();
+        car.setCustomer(new Customer());
     }
 
     /**
@@ -40,4 +44,5 @@ public class CarService implements Serializable {
     {
         return carRequestBean.addCar(car);
     }
+
 }
