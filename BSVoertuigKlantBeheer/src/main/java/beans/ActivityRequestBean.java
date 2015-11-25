@@ -1,13 +1,13 @@
 package beans;
 
-import javax.ejb.Stateful;
-import javax.inject.Inject;
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import persist.Activity;
 import repo.ActivityRepository;
+
+import javax.ejb.Stateful;
+import javax.inject.Inject;
 
 /**
  * Created by Remco on 24-11-2015.

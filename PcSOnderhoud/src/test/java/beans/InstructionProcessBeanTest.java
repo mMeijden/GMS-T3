@@ -1,7 +1,5 @@
 package beans;
 
-import javax.faces.context.FacesContext;
-
 import example.ApkCaller;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,9 +9,7 @@ import util.InstructionStatus;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 /**
  * Created by Remco on 21-11-2015.

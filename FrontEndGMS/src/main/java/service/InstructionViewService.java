@@ -1,11 +1,5 @@
 package service;
 
-import java.util.Date;
-
-import javax.ejb.EJB;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
-
 import beans.ActivityRequestBean;
 import beans.InstructionProcessBean;
 import beans.InstructionRequestBean;
@@ -15,6 +9,11 @@ import lombok.Setter;
 import persist.Activity;
 import persist.Instruction;
 import util.InstructionStatus;
+
+import javax.ejb.EJB;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+import java.util.Date;
 
 /**
  * Created by Remco on 25-11-2015.

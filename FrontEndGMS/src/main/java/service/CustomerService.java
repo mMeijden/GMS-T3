@@ -23,6 +23,7 @@ public class CustomerService implements Serializable {
 
     private Customer customer;
 
+
     @EJB
     private CustomerRequestBean customerRequestBean;
 
@@ -55,10 +56,11 @@ public class CustomerService implements Serializable {
         customerRequestBean.updateCustomer(customer);
     }
 
-
     public String viewCustomer(Customer customer) {
-        this.customer = customer;
+        this.customer = new Customer();
+        this.customer = customerRequestBean.findByEmail(customer.getEmail());
         return "viewCustomer";
 
     }
+
 }

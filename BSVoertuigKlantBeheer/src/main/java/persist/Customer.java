@@ -1,15 +1,12 @@
 package persist;
 
 
-import java.io.Serializable;
-
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Transient;
-import javax.validation.constraints.NotNull;
-
 import lombok.*;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by @author Matthijs van der Meijden on 19-11-2015.
@@ -18,8 +15,15 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "GMS_CUSTOMER")
 @Entity
 @Builder
+@NamedQueries({
+        @NamedQuery(
+                name = "findByEmail",
+                query = "SELECT c FROM Customer c WHERE c.email = :email"
+        )
+})
 public class Customer extends AbstractPersistentEntity implements Serializable {
 
     @NotNull
@@ -39,11 +43,16 @@ public class Customer extends AbstractPersistentEntity implements Serializable {
     private String phone;
     @NotNull
     private String email;
+
     @Transient
     private boolean edited = false;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
+    private List<Car> cars;
 
-    @OneToOne(mappedBy = "customer")
-    private LeasingCompany leasingCompany;
+    public void addCarToList(Car car){
+        cars.add(car);
+    }
 
+    public void delCarFromList(Car car){cars.remove(car);}
 }

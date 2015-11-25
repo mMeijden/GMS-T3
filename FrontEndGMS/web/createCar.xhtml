@@ -53,11 +53,18 @@
                                          p:maxLength="50"
                                          styleClass="form-control"/>
                         </div>
+                        <div class="form-group">
+                            <h:outputLabel>Owner</h:outputLabel><br/>
+                            <h:inputText id="Owner"
+                                         value="#{carService.car.customer.email}"
+                                         p:title="Enter the emailaddress"
+                                         p:placeholder="johndoe@example.com"
+                                         styleClass="form-control"/>
+                        </div>
 
                         <div class="form-group">
-                            <h:commandButton value="Create" action="#{carService.addCar()}"
+                            <h:commandButton value="Create without Owner" action="#{carService.addCar()}"
                                              styleClass="btn btn-primary"/>
-
                         </div>
                     </h:form>
                 </p>

@@ -1,19 +1,16 @@
 package repo;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.junit.Before;
+import org.junit.Test;
+import persist.Instruction;
+import util.InstructionStatus;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-
-import org.junit.Before;
-import org.junit.Test;
-import persist.Car;
-import persist.Instruction;
-import util.InstructionStatus;
+import java.util.ArrayList;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;

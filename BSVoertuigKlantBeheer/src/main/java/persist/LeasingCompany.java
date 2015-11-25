@@ -1,14 +1,14 @@
 package persist;
 
 
-import java.io.Serializable;
-
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.validation.constraints.NotNull;
-
 import lombok.*;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by @author Matthijs van der Meijden on 19-11-2015.
@@ -24,8 +24,6 @@ public class LeasingCompany extends AbstractPersistentEntity implements Serializ
     @NotNull
     private String companyName;
 
-    @JoinColumn(name = "CUSTOMERID")
-    private Customer customer;
     @NotNull
     private String streetName;
     @NotNull
@@ -38,4 +36,8 @@ public class LeasingCompany extends AbstractPersistentEntity implements Serializ
     private String phone;
     @NotNull
     private String email;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "leasingCompany")
+    private List<Car> cars;
+
 }

@@ -4,10 +4,10 @@ package repo;
  * Created by @author Matthijs van der Meijden on 19-11-2015.
  */
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.Setter;
+import persist.AbstractPersistentEntity;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -19,11 +19,10 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
-
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.Setter;
-import persist.AbstractPersistentEntity;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Created by alex on 11/9/15.

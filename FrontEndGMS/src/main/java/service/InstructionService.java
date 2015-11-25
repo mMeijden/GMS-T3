@@ -1,21 +1,6 @@
 package service;
 
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-
-import javax.annotation.PostConstruct;
-import javax.ejb.EJB;
-import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
-import javax.faces.bean.SessionScoped;
-import javax.faces.component.UIComponent;
-import javax.faces.context.FacesContext;
-import javax.faces.validator.ValidatorException;
-import javax.validation.constraints.AssertTrue;
-
 import beans.ActivityRequestBean;
 import beans.InstructionProcessBean;
 import beans.InstructionRequestBean;
@@ -25,6 +10,19 @@ import lombok.Setter;
 import persist.Activity;
 import persist.Instruction;
 import util.InstructionStatus;
+
+import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.validator.ValidatorException;
+import javax.validation.constraints.AssertTrue;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Remco on 19-11-2015.
@@ -56,6 +54,8 @@ public class InstructionService {
         instruction = new Instruction();
         instruction.setStatus(InstructionStatus.OPEN);
     }
+
+
 
     /**
      * Create the instruction.

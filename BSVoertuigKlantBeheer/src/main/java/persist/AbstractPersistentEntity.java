@@ -1,12 +1,12 @@
 package persist;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  * Created by @author Matthijs van der Meijden on 19-11-2015.

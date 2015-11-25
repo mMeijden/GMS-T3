@@ -1,18 +1,16 @@
 package beans;
 
-import java.util.ArrayList;
-
 import org.junit.Before;
 import org.junit.Test;
 import persist.Instruction;
 import repo.InstructionRepository;
 import util.InstructionStatus;
 
+import java.util.ArrayList;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 /**
  * Created by Remco on 21-11-2015.

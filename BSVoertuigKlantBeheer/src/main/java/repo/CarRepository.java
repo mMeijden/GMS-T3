@@ -1,11 +1,10 @@
 package repo;
 
-import java.util.List;
+import persist.Car;
 
 import javax.ejb.Stateful;
 import javax.persistence.NoResultException;
-
-import persist.Car;
+import java.util.List;
 
 /**
  * Created by @author Matthijs van der Meijden on 19-11-2015.

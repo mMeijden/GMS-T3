@@ -1,7 +1,5 @@
 package service;
 
-import java.util.ArrayList;
-
 import beans.ActivityRequestBean;
 import beans.InstructionProcessBean;
 import beans.InstructionRequestBean;
@@ -9,6 +7,8 @@ import org.junit.Before;
 import org.junit.Test;
 import persist.Activity;
 import persist.Instruction;
+
+import java.util.ArrayList;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertNotNull;

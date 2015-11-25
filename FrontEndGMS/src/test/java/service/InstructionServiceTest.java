@@ -1,28 +1,20 @@
 package service;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-
-import javax.faces.component.UIComponent;
-import javax.faces.context.FacesContext;
-import javax.faces.validator.ValidatorException;
-
 import beans.ActivityRequestBean;
 import beans.InstructionProcessBean;
 import beans.InstructionRequestBean;
 import org.junit.Before;
 import org.junit.Test;
-import persist.Activity;
 import persist.Instruction;
-import util.InstructionStatus;
+
+import javax.faces.validator.ValidatorException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Matchers.notNull;
-import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
