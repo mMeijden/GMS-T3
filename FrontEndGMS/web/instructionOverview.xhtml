@@ -22,7 +22,6 @@
                                 <f:facet name="header">
                                     Car
                                 </f:facet>
-                                #{}
                                 #{instruction.car.license} #{instruction.car.brand} #{instruction.car.type}
                             </h:column>
                             <h:column>
@@ -45,7 +44,7 @@
                                 <div class="btn-group">
                                     <h:commandButton value="Details"
                                                      styleClass="btn btn-primary"
-                                                     action="#{instructionService.viewInstruction(instruction)}"/>
+                                                     action="#{instructionViewService.viewInstruction(instruction)}"/>
                                 </div>
                             </h:column>
                         </h:dataTable>

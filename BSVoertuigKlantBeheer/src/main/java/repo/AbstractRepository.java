@@ -5,7 +5,9 @@ package repo;
  */
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -13,6 +15,10 @@ import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -54,6 +60,7 @@ public abstract class AbstractRepository<T extends AbstractPersistentEntity> {
     public void save() {
         itemList.forEach(getEm()::persist);
         getEm().flush();
+        itemList.clear();
     }
 
     /**
@@ -74,7 +81,20 @@ public abstract class AbstractRepository<T extends AbstractPersistentEntity> {
      * @param item the item to update.
      */
     public void update(final T item) {
-        getEm().merge(item);
+        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+        Validator validator = factory.getValidator();
+        Set<ConstraintViolation<T>> constraintViolations = validator.validate(item);
+        if(constraintViolations.size() > 0){
+            Iterator<ConstraintViolation<T>> iterator = constraintViolations.iterator();
+            while(iterator.hasNext()){
+                ConstraintViolation<T> cv = iterator.next();
+                String message = cv.getRootBeanClass().getName() + "." + cv.getPropertyPath() + " " + cv.getMessage();
+                System.err.println(message);
+            }
+        }
+        else {
+            getEm().merge(item);
+        }
     }
 
     /**

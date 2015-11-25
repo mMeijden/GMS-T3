@@ -2,6 +2,7 @@ package beans;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateful;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
 import example.ApkCaller;
@@ -48,7 +49,7 @@ public class InstructionProcessBean {
         } else {
             createInstruction(car, instruction);
         }
-        return "instructionConfirmed";
+        return FacesContext.getCurrentInstance().getExternalContext().getApplicationContextPath() + "/customerOverview.xhtml";
     }
 
     /**

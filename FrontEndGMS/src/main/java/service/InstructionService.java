@@ -9,6 +9,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -32,7 +33,7 @@ import util.InstructionStatus;
 @Setter
 @NoArgsConstructor
 @ManagedBean(name = "instructionService")
-@SessionScoped
+@RequestScoped
 public class InstructionService {
 
     @EJB
@@ -63,6 +64,9 @@ public class InstructionService {
      */
     public String createInstruction() {
         String s = instructionProcessBean.executeProcess(email, license, instruction);
+        instruction = new Instruction();
+        license = "";
+        email = "";
         return s;
     }
 
@@ -100,76 +104,6 @@ public class InstructionService {
     public List<Instruction> getOpenInstructions() {
         List<Instruction> list = instructionRequestBean.getOpenInstructions();
         return list;
-    }
-
-    /**
-     * Start an instruction and change it's state.
-     *
-     * @param instruction instruction to start
-     */
-    public void startInstruction(Instruction instruction) {
-        instructionRequestBean.alterInstructionStatus(instruction, InstructionStatus.IN_PROGRESS);
-    }
-
-    /**
-     * End instruction and change it's state.
-     *
-     * @param instruction instruction to end
-     */
-    public void endInstruction(Instruction instruction) {
-        instructionProcessBean.endInstruction(instruction);
-    }
-
-    public String viewInstruction(Instruction instruction){
-        this.instruction = instruction;
-        return "instructionView";
-    }
-
-    /**
-     * Add new activity too the instruction.
-     */
-    public void addNewActivity(){
-        Activity new_activity = new Activity();
-        new_activity.setEdited(true);
-        new_activity.setAssignDate(new Date());
-        new_activity.setHoursSpent(0);
-        new_activity.setInstruction(instruction);
-        instruction.getActivities().add(new_activity);
-        activityRequestBean.createActivity(new_activity);
-    }
-
-    /**
-     * Make activity editable.
-     */
-    public void editActivity(Activity activity){
-        activity.setEdited(true);
-    }
-
-    /**
-     * Save activity changes in DB.
-     * @param activity the activity which needs to be saved
-     */
-    public void saveActivity(Activity activity){
-        activity.setEdited(false);
-        activityRequestBean.updateActivity(activity);
-    }
-
-    /**
-     * Remove activity from instruction.
-     * @param activity the activity which needs to be removed
-     */
-    public void removeActivity(Activity activity){
-        instruction.getActivities().remove(activity);
-        activityRequestBean.deleteActivity(activity);
-    }
-
-    /**
-     * Sign off activity.
-     * @param activity the activity which needs to be signed off
-     */
-    public void signOffActivity(Activity activity){
-        activity.setSignOffDate(new Date());
-        activityRequestBean.updateActivity(activity);
     }
 
     /**

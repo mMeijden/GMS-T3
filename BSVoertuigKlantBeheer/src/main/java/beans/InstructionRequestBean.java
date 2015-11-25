@@ -70,4 +70,8 @@ public class InstructionRequestBean implements Serializable {
     public Instruction findInstructionById(Long id){
         return instructionRepository.findById(id);
     }
+
+    public void updateInstruction(Instruction instruction){
+        instructionRepository.update(instruction);
+    }
 }
