@@ -54,4 +54,6 @@ public class Customer extends AbstractPersistentEntity implements Serializable {
     public void addCarToList(Car car){
         cars.add(car);
     }
+
+    public void delCarFromList(Car car){cars.remove(car);}
 }

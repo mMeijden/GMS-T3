@@ -28,12 +28,18 @@ public class CouplingProcessBean {
     private Car car;
     private Customer customer;
 
+
     public String coupleOwnerToCar(String license, String email){
         if(customerExists(email)){
 
             if(carExists(license)){
+                Customer oldCustomer = car.getCustomer();
+                oldCustomer.delCarFromList(car);
                 customer.addCarToList(car);
                 car.setCustomer(customer);
+                carRequestBean.updateCar(car);
+                customerRequestBean.updateCustomer(customer);
+                customerRequestBean.updateCustomer(oldCustomer);
                 return returnPage = "index";
             }else{
                 return "createCar";
